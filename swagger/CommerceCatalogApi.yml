@@ -1,0 +1,251 @@
+swagger: '2.0'
+info:
+  description: Commerce Catalog API for exposing Product and Skus
+  version: '1.0'
+  title: Commerce Catalog API
+host: 'localhost:11000'
+basePath: /service/rest/v1
+schemes:
+  - http
+paths:
+  '/api/catalog/products/{productIds}':
+    get:
+      tags:
+        - product(s)
+      summary: Finds Products by product ids
+      description: Multiple product Ids can be provided with comma separated strings
+      operationId: getProducts
+      produces:
+        - application/json
+      parameters:
+        - name: productIds
+          in: path
+          description: Single productId Or Comma separated list of product ids
+          required: true
+          type: string
+        - name: locale
+          in: query
+          description: 'Optional locale, if not passed en_US will be used'
+          required: false
+          type: string
+        - name: User-Agent
+          in: header
+          type: string
+          required: true
+          description: User Agent parameter
+        - name: MSG_ID
+          in: header
+          type: string
+          description: Optional MSG_ID for logging and debugging
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/ProductResponse'
+        '202':
+          description: Partial successful operation
+          schema:
+            $ref: '#/definitions/ProductResponse'
+        '400':
+          description: 'Invalid productId(s), api version,'
+        '401':
+          description: No API-KEY or invalid API-KEY
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        '404':
+          description: No product(s) found
+        '500':
+          description: Internal Server Error
+  '/api/catalog/skus/{skuIds}':
+    get:
+      tags:
+        - sku(s)
+      summary: Finds skus by sku ids
+      description: Multiple sku Ids can be provided with comma separated strings
+      operationId: getSkus
+      produces:
+        - application/json
+      parameters:
+        - name: skuIds
+          in: path
+          description: Single skuId Or Comma separated list of sku ids
+          required: true
+          type: string
+        - name: locale
+          in: query
+          description: 'Optional locale, if not passed en_US will be used'
+          required: false
+          type: string
+        - name: digitalProperty
+          in: query
+          description: ''
+          required: false
+          type: string
+        - name: stripHtml
+          in: query
+          description: ''
+          required: false
+          type: string
+        - name: User-Agent
+          in: header
+          type: string
+          required: true
+          description: User Agent parameter
+        - name: MSG_ID
+          in: header
+          type: string
+          description: Optional MSG_ID for logging and debugging
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/SkuResponse'
+        '202':
+          description: Partial successful operation
+          schema:
+            $ref: '#/definitions/SkuResponse'
+        '400':
+          description: 'Invalid skuId(s), api version,'
+        '401':
+          description: No API-KEY or invalid API-KEY
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        '404':
+          description: No sku(s) found
+        '500':
+          description: Internal Server Error
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: API-KEY
+    in: header
+definitions:
+  ProductResponse:
+    type: object
+    properties:
+      version:
+        type: number
+      message:
+        type: string
+      msgId:
+        type: string
+      products:
+        type: array
+        items:
+          $ref: '#/definitions/Product'
+  SkuResponse:
+    type: object
+    properties:
+      version:
+        type: number
+      message:
+        type: string
+      msgId:
+        type: string
+      skus:
+        type: array
+        items:
+          $ref: '#/definitions/Sku'
+  APIErrorResponse:
+    type: object
+    properties:
+      version:
+        type: number
+      servicePath:
+        type: string
+      message:
+        type: string
+      msgId:
+        type: string
+      error:
+        $ref: '#/definitions/Error'
+  Product:
+    type: object
+    properties:
+      id:
+        type: string
+      isNew:
+        type: boolean
+      childSkus:
+        type: array
+        items:
+          $ref: '#/definitions/Sku'
+      category:
+        $ref: '#/definitions/Category'
+      media:
+        type: array
+        items:
+          $ref: '#/definitions/Media'
+  Category:
+    type: object
+    properties:
+      productTitle:
+        type: string
+      productDescription:
+        type: string
+  Sku:
+    type: object
+    properties:
+      id:
+        type: string
+      title:
+        type: string
+      taxCategory:
+        type: string
+      displayName:
+        type: string
+      titleCart:
+        type: string
+      subTitle1:
+        type: string
+      subTitle2:
+        type: string
+      isHomeDirect:
+        type: boolean
+      canView:
+        type: boolean
+      canPurchase:
+        type: boolean
+      maxCartQty:
+        type: integer
+      prices:
+        $ref: '#/definitions/Price'
+  Price:
+    type: object
+    properties:
+      currency:
+        type: string
+      retailPrice:
+        type: number
+      coachPrice:
+        type: number
+  Media:
+    type: object
+    properties:
+      id:
+        type: integer
+      parentId:
+        type: integer
+      type:
+        type: string
+        example: thumbnail / main
+      mediaType:
+        type: string
+        example: 'image,video,word,pdf'
+      source:
+        type: string
+        example: 'cloudinary,brightcove, youtube'
+      url:
+        type: string
+      version:
+        type: string
+        example: cdn caching version
+      altText:
+        type: string
+  Error:
+    type: object
+    properties:
+      errorCode:
+        type: string
+      errorMessage:
+        type: string
