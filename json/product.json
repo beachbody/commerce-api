@@ -1,0 +1,131 @@
+// /api/catalog/products( productIds [], digitalProperty: optional (defaults to global, all attributes), locale: optional (defaults to en_us), skuDetails: optional (defaults to false, only SKU IDs, skuDefaultOnly: optional (used to return price at the Product level, defaults to false, returns all SKU IDs) ) )
+{
+  "msgId": "string", //| Unique message id for logging and debugging |//
+  "message": "string", //| Optional debug message, in case request is not completely fulfilled,  |//
+  "version": "1.0", //| Schema Version |//
+  
+"products": [
+  {
+    "id": "productId", //| PIM Product ID. Returns full Response for each valid Product ID, and error message for each invalid Product ID along with the invalid Product ID. Invalid Product IDs do not fail the entire Response for valid Product IDs |//
+      "media": [
+          { //| Question - Examples: main, etc. Does WCS/ATG have groupings other than main? Answer: WCS/ATG differentiates between Category Detail Page images and Product Detail Page imagesv
+            "type": "main, thumbnail",
+            "mediaType": "video, image, pdf, word, etc",
+            "url": "http://img1.beachbodyimages.com/...", //| Full URL path images, pdfs, Word documents. Does not apply to videos |//
+            "parentId": "123456", //| Used to associate thumbnail content (i.e. images, title) with main content (images, videos) |//
+            "title": "", //| Media title/caption. Applicable for videos. Field type: text, Field length: 255 characters |//
+            "source": "cloudinary, brightcove, youtube, etc.", //| Field type: text |//
+            "version": "123456", //| CDN caching version |//
+            "id": "123456", //| Cloudinary ID or BrightCove or YouTube video ID for embedded players. Not a full URL/URIc |//
+            "altText": "" //| SEO or ADA (Americas With Disabilities Act) alt tag. Field type: text, Field length: 255 characters |//
+          }
+      ],
+      "category": {
+        "productTitle": "Chocolate", //| Product title on Category page. Distinct from Product title on Product page. Fallback to Simple Product Name Default syndicated from PIM to ATG. Field type: HTML, Field length: 100 characters |//
+        "productDescription": "", //| Product copy/text description on Category page. On Wave 1, also used for Product copy/text description in Cart/Checkout. Uses WCS attribute CDP Short Description. Field type: HTML, Field length: 400 characters |//
+        "categories": [ //| Category that the Product is assigned to. Based on Endeca's Product to Category association, not the BCC/WCS Product to Category association |//
+          {
+            "id": "123", //| ATG Category ID |//
+            "title": "Fitness, Nutrition, etc.",
+            "subCategory": [ //| SubCategory that the Product is assigned to |//
+              {
+                "id": "123", //| ATG Category ID |//
+                "title": "Fitness, Nutrition, etc."
+              }
+            ] 
+          }
+        ]
+      },
+      "title": "", //| Product title on Product page. Distinct from Product title on Category page. Fallback to Simple Product Name Default syndicated from PIM to ATG. Field type: HTML, Field length: 100 characters |//
+      "description": "", //| Product copy/text description on Product page. Uses WCS attribute PDP Short Description. Field type: HTML, Field length: 400 characters |//
+      "isOutOfStock": false, //| Derived boolean value. Calculated based on inventory feed from EBS to ATG, and current SKUs sold count since the last inventory synchronization |//
+      "eligibleForOutOfStock": false, //| Curated boolean option to include in inventory feed from EBS to ATG to determine whether Product/SKUs are Out of Stock |//
+      "type": "", //| TODO: Is this mapped to kitType ?  |//
+      "isInventoryStockAvailable": "", //| TODO: Will check to see if this is the same as isOutOfStock |//
+      "dailyNutrition": false, //| Curated meta data. Tagged in the PIM |//
+      "isNew": false, //| Derived boolean value in ATG based on the start_date <= (SYSDATE() - 60 Days) |//
+      "isOnSale": false, //| Derived boolean value in ATG. Calculated by comparing the PriceList (managed in EBS) with the SalePricelist (managed in the BCC) |//
+      "visibleInStore": true, //| Curated boolean option to show/hide Products in the eCommerce user facing websites as an override. Controlled in the BCC |//
+      "isBestSeller": false, //| Curated boolean meta data. Tagged in the PIM |//
+      "isLowInventory": false, //| TODO: Is this derived based on actual inventory? What is the relationship to the SKU stock attribute?  |//
+      "dateAvailable": "2011-08-12T20:17:46.384Z", //| Zulu (ISO 8061) |//
+      "endDate": "2011-08-12T20:17:46.384Z", //| Maintained in the PIM to end_date Product for both eCommerce initial sales as well as Customer Service support of existing sales. Zulu (ISO 8061) |//
+      "isBOD": false,
+      "performanceNutrition": "",
+      "program": "", //| Grouping of Products by Brand/Trainer (e.g. Curated meta data. Tagged in the PIM |//
+      "flavor": "", //| Curated meta data. Tagged in the PIM |//
+      "active": false, //| Applies to both the Product & SKU. Derived value |//
+      "daysAvailable": 206,
+      "benefits": [    //| Benefit tabs with Copy and/or Images. Standardized format for any of the following WCS module asset definitions: TAB_ImageText, TAB_OneColumn, TAB_TwoColumn, TAB_Nutrition, TAB_Recipe, TAB_TileContainer, TAB_Shakeology_TileContainer |//
+        {
+	"title": "", //| Field type: HTML, Field length: 255 characters |//
+	"heading": "", //| Field type: HTML, Field length: 255 characters |//
+   	"modules": [ //| Columns or Tiles in sequential order |//
+         {
+         "title": "", //| Field type: HTML, Field length: 255 characters |//
+	 "media": [
+	   {
+	    "type": "main, background", 
+	    "mediaType": "video, image, pdf, word, etc",
+	    "http://img1.beachbodyimages.com/..." //| Full URL path images, pdfs, Word documents. Does not apply to videos |//
+	   }
+	   ],
+	 "description": "Why You’ll Love Drinking Shakeology..." //| Description of module benefits. Field type: HTML, Field length: 4000 characters |//
+         "attributes": [
+	   {
+	    "description": "1 serving Café Latte Shakeology"  //| Description of ingredients. Field type: HTML, Field length: 255 characters |//
+	   }
+	   ]
+          }
+         ] 
+	}
+      ],
+    "successStories": {
+        "title": "What will YOUR success look like?", //| Success Stories overall section title. Distinct from individual Success Story Profile titles. Field type: HTML, Field length: 256 characters |//
+        "description": "", //| Success Stories overall section description. Distinct from individual Success Story Profile descriptions. Field type: HTML, Field length: 4000 characters |//
+        "disclaimer": "", //|  Success Stories overall section disclaimer. Distinct from individual Success Story Profile disclaimer. Field type: HTML, Field length: 4000 characters |//
+	"profiles": [
+          {
+          "title": "Amanda Y.",
+          "url": "http://|img1.beachbodyimages.com/...", //| Full URL path to image |//
+	  "story": "\"Shakeology has changed my life! It has provided me with nutrients that I would never get otherwise.\"", //| Success Story user's testimonial / quote |//
+	  "disclaimer": "Amanda is an independent Beachbody Coach.", //| Success Story user's disclaimer |//
+	  "attributes": [
+	    {
+	    "LOST 81 LBS. in 6 months" //| Description of archievements. Field type: HTML, Field length: 255 characters |//
+	    }
+	  ]
+	}
+       ] 
+      },
+      "testimonialTitle" : "", //| Name of user who submitted the Product Testimonial or Quote. Field type: HTML, Field length: 255 characters |//
+      "testimonialDescription" : "", //| Product Testimonial or Quote. Field type: HTML, Field length: 4000 characters |//
+      "testimonialLocation : "", //| Location of user who submitted the Product Testimonial or Quote. Field type: HTML, Field length: 255 characters |//
+      "onSiteSearchKeywords": [ //| Keywords associated with this Product. Managed in Endeca |//
+        "fitness",
+        "nutrition",
+        "sandwiches"
+      ],  
+      "metaTitle": "", //| SEO Meta Tag for Title. Field type: HTML, Field length: 255 characters |//
+      "metaKeywords": "", //| SEO Meta Tag for Keywords. Field type: HTML, Field length: 255 characters |//
+      "metaDescription": "", //| SEO Meta Tag for Description. Field type: HTML, Field length: 255 characters |//
+      "metaRobots": "", //| SEO Meta Tag for Robots. Field type: HTML, Field length: 255 characters |//
+      "promotionalMessage" : "", //| Temporary promotional copy. Field type: HTML, Field length: 250 characters |//
+      "disclaimers": [ //| Product Global disclaimers that are returned for all Digital Properies (e.g. Wave 1, BOD, Apple). Order set by rank order in BCC |//
+        "Shakeology Subscription: Starting in 30 days...", //| Content & Sort order maintained in WSC. Product / SKU mapping maintained in BCC |//
+        "Beachbody On Demand Membership: After your free 30-day trial..."
+      ],
+      "digitalPropertyDisclaimers": [ //| Product Digital Property specific disclaimers that are only returned for digitalProperty in the API Request (e.g. Apple). Order set by rank order for that Digital Property in BCC |//
+        "Apple Shakeology Subscription: Starting in 30 days...", //| Content & Sort order maintained in WSC. Product / SKU mapping maintained in BCC |//
+        "Apple Beachbody On Demand Membership: After your free 30-day trial..."
+      ],
+        "childSKUs": [
+        { 
+	"id": "MDSHK0202N1E102"
+	"type": "main, configurableOption, addOn", //| main = Configurable Option main (header) SKU, configurableOption = mandatory selection, addOn = added to Cart without user's selection |//
+	"parentId": "MDBCPBOD", //| Used to associate Configurable SKU childSKUs with parent SKU |//
+	}
+      ]
+    }
+  }
+]

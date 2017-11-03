@@ -1,0 +1,51 @@
+// /api/catalog/skus( skuId[], digitalProperty: optional (defaults to global, all attributes), locale: optional (defaults to en_us), stripHtml = false ), userType: optional (REGISTEREDUSER, COACH, etc.) 
+{
+  "msgId": "string", //| Unique message id for logging and debugging |//
+  "message": "optional debug message, in case request is not completely fulfilled",
+  "version": "1.0", //| Schema Version |//
+  "skus": [  
+        { 
+          "id": "MDSUCLNSO3101HD",  
+          "title": "",
+          "subTitle1": "",
+          "subTitle2": "",
+          "titleCart": "",
+          "eligibleForResale": true,
+          "stock": -1,
+          "personalVolume": -1,
+          "canView": true,
+          "canPurchase": true, //| Based on userType (e.g. Coach-only Products for Coaches, Challenge Packs for non-Coaches) |//
+          "taxCategory": "123456", //| Set in PIM. Used in the call to Sabrix for the tax calculation in combination with the ship to address |//
+          "maxCartQty": 5,
+          "displayName": "Ult Reset Soothe HD",
+          "dateAvailable": "2011-08-12T20:17:46.384Z", //| Zulu (ISO 8061) |//
+          "endDate": "2011-08-12T20:17:46.384Z", //| Zulu (ISO 8061) |//
+          "isHomeDirect": false, //| Curated boolean meta data. Tagged in the PIM. Synonym for Subscription / Continuity / AutoShip |//
+	  "flavorType" : "Alternating, Single Flavor (30 serving bag or 24 packets), Combo Flavor Box (24 packets)", //| BCC Field - Product Options: Flavor Type. Used for Challenge Pack & Shakeology Flavors |//
+	  "flavor" : "Chocolate, Vanilla",  //| BCC Field - Product Options: Flavor. Used for Challenge Pack, Performance Pack, Shakeology, Daily Sunshine Flavors |//
+	  "packagingSize" : "30 Servings in resealable bag", //| BCC Field - Product Options: Serving |//
+	  "orderFrequency" : "One Time, Monthly, Quarterly", //| BCC Field - Product Options: Recurring Order Frequency |//
+	  "optionalPurchase": true, //| Programatically determined in ATG. Applies to Beachbody on Demand membership free trial offer in Challenge Packs, which is not shown for current BOD members and is optional for all non-BOD Customers |//
+          "disclaimers": [ //| SKU Global disclaimers that are returned for all Digital Properies (e.g. Wave 1, BOD, Apple). Order set by rank order in BCC |//
+            "Shakeology Subscription: Starting in 30 days...", //| Content & Sort order maintained in WSC. Product / SKU mapping maintained in BCC |//
+            "Beachbody On Demand Membership: After your free 30-day trial..."
+          ],
+          "digitalPropertyDisclaimers": [ //| SKU Digital Property specific disclaimers that are only returned for digitalProperty in the API Request (e.g. Apple). Order set by rank order for that Digital Property in BCC |//
+            "Apple Shakeology Subscription: Starting in 30 days...", //| Content & Sort order maintained in WSC. Product / SKU mapping maintained in BCC |//
+            "Apple Beachbody On Demand Membership: After your free 30-day trial..."
+          ],
+          "prices": {
+            "currency": "USD", //| Based on Country - "USD/CAD/GBP" |//
+            "retailPrice": 100.00, //| Price of item from BCC Pricelist for RegisteredUser (Free Customer) userType |//
+            "coachPrice": 70.00, //| Price of item from BCC Pricelist for Coach userType |//
+            "salesPrice": 63.00, //| Price of item from BCC Sales Pricelist |//
+            "discountPrice": 90.00 //| promotionPrice |//
+          },
+	  "coachBonusAttributes": {
+            "personalVolume": 5.0, //| Based on SKU |//
+            "commissionVolume": 5.0,
+          }
+        }
+      ]
+      
+}

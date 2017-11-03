@@ -1,0 +1,117 @@
+/'
+ Beachbody.com --> BOD --> ATG integration sequence
+ @author: Steve Polk
+ @date: 8/23/17
+ @version: 1.0
+'/
+
+@startuml
+title BB/BOD -> ATG integration sequence
+
+header
+  author: Steve Polk
+  date: 8/23/17
+  version: 1.0
+endheader
+
+scale 1
+
+actor User as user
+
+box "Beachbody Consumer Application"
+  control "Digital Properties"
+end box
+
+box "Beachbody Consumer API (Lambda)" #LightBlue
+  control "Node API" as nodeApi
+  control "BB Connect" as bbConnect
+end box
+
+participant "Card Connect" as cardconnect
+participant "QAS Address Validation" as qas
+
+box "Beachbody Enterprise API" #D7BDE2
+  boundary "Catalog API" as catalogApi
+  boundary "Cart API" as cartApi
+end box
+
+box "Beachbody Enterprise Application" #F1948A
+  boundary "Commerce Engine" as commerce
+  boundary "Oracle EBS" as ebs
+end box
+
+control "Orders" as orders
+
+group BOD Product Page Load
+  user --> nodeApi: Get Catalog(categoryId, programName, region, language)
+  nodeApi --> catalogApi:
+  catalogApi --> commerce:
+  commerce -> catalogApi:
+  catalogApi -> nodeApi:
+  nodeApi -> user: Catalog response
+end group
+
+note left of user
+  NOTE: Be sure to add some logic around the logged in
+  and logged out user controls and what is passed for coaches
+end note
+
+group Cart Operations (Add, Update, Delete)
+  user --> nodeApi: addToBasket(sessionId, sku, guid(optional))
+  nodeApi --> cartApi: addToBasket()
+  cartApi --> commerce: Commerse response
+  commerce -> cartApi:
+  cartApi -> nodeApi:
+  nodeApi -> user: Node API response (basketCount)
+
+  user --> nodeApi: updateBasket(sessionId, sku, guid(optional))
+  nodeApi --> cartApi: updateBasket()
+  cartApi -> commerce: Commerce response
+  commerce -> cartApi: 
+  cartApi -> nodeApi:
+  nodeApi -> user: Node API response (basketCount)
+end group
+
+group Checkout Form Load
+  user --> nodeApi: HTTPS GET /api/v1/cart/{cartId}\nHeaders: CustomerID, SessionID
+  nodeApi --> cartApi:
+  cartApi --> commerce:
+  commerce -> cartApi:
+  cartApi -> nodeApi
+  nodeApi -> user
+end group
+
+note left of user
+  NOTE: Be sure to add all of the new data being passed along 
+  for the cart: first, last, guid, role, coach id
+end note
+
+group Checkout Form Submission
+  user --> user: User completes checkout form,\nclient-side validation
+  user --> qas: address validation: HTTPS POST /api/v1/validate/postalCode
+  qas -> user: Validated Address
+  
+  user --> cardconnect: tokenize credit card
+  cardconnect -> user: { cc token }, credit card removed from client state
+  user --> user: Clicks `Place Order` button
+end group
+
+group Purchase Workflow
+  user --> nodeApi: HTTPS POST /api/v1/checkout
+  nodeApi --> cartApi:
+  cartApi --> commerce: order validation
+  alt Error - payment/validation failure, internal error, etc.
+    commerce -> cartApi: { order failed response }
+    cartApi -> nodeApi: 
+    nodeApi -> user: Error message displayed
+  end
+  commerce --> orders: dispatches order
+  orders --> commerce: order successfully queued
+  commerce -> cartApi: order submitted 
+  cartApi -> nodeApi: order submitted
+  nodeApi --> user: order successfully placed - display `thank you` page
+end
+
+orders --> ebs: Orders batched every 5 mins through SOA
+
+@enduml
