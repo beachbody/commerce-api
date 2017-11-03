@@ -37,9 +37,9 @@
           "prices": {
             "currency": "USD", //| Based on Country - "USD/CAD/GBP" |//
             "retailPrice": 155.95, //| Price of item from BCC Pricelist for RegisteredUser (Free Customer) userType |//
-            "userSegmentPrice": 93.57, //| Price of item from BCC Pricelist for userType (this is tier price from wave1)|//
+            "userSegmentPrice": 93.57, //| Price of item from BCC Pricelist for userType. Synonymous with 'Tier' price on ATG |//
             "promotionPrice": 124.76, //| Price of item from BCC Sales Pricelist |//
-            "specialOfferPrice": 50.00 //| computed based on cart content |//
+            "specialOfferPrice": 50.00 //| Programmatically calculated based on cart content using the Special Offer business logic in the BCC. Dependency on the Cart API endpoint's availability |//
             },
 	  "coachBonusAttributes": {
             "personalVolume": 5.0, //| Based on SKU |//
