@@ -9,7 +9,7 @@
     "id": "productId", //| PIM Product ID. Returns full Response for each valid Product ID, and error message for each invalid Product ID along with the invalid Product ID. Invalid Product IDs do not fail the entire Response for valid Product IDs |//
       "media": [
           { //| Question - Examples: main, etc. Does WCS/ATG have groupings other than main? Answer: WCS/ATG differentiates between Category Detail Page images and Product Detail Page imagesv
-            "type": "main, thumbnail",
+            "type": "main, thumbnail", //| WCS Field - Image: Main Image / Thumbnail Image. Example Image: 21 Day Fix Base Kit PDP, Metadata ID: 1408686357132. |//
             "mediaType": "video, image, pdf, word, etc",
             "url": "http://img1.beachbodyimages.com/...", //| Full URL path images, pdfs, Word documents. Does not apply to videos |//
             "parentId": "123456", //| Used to associate thumbnail content (i.e. images, title) with main content (images, videos) |//
