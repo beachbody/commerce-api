@@ -36,26 +36,26 @@
           }
         ]
       },
-      "title": "", //| Product title on Product page. Distinct from Product title on Category page. Fallback to Simple Product Name Default syndicated from PIM to ATG. Field type: HTML, Field length: 100 characters |//
-      "description": "", //| Product copy/text description on Product page. Uses WCS attribute PDP Short Description. Field type: HTML, Field length: 400 characters |//
-      "isOutOfStock": false, //| Derived boolean value. Calculated based on inventory feed from EBS to ATG, and current SKUs sold count since the last inventory synchronization |//
-      "eligibleForOutOfStock": false, //| Curated boolean option to include in inventory feed from EBS to ATG to determine whether Product/SKUs are Out of Stock |//
+      "title": "", //| WCS Field - Product: PDP Product Title. Example - Product: 21DayFixBaseKit, Metadata ID: 1408699428538. Product title on Product page. Distinct from Product title on Category page. Fallback to Simple Product Name Default syndicated from PIM to ATG. Field type: HTML, Field length: 100 characters |//
+      "description": "", //| WCS Field - Product: Short Description. Example - Product: 21DayFixBaseKit, Metadata ID: 1408699428538. Product copy/text description on Product page. Uses WCS attribute PDP Short Description. Field type: HTML, Field length: 400 characters |//
+      "isOutOfStock": false, //| BCC Field - Product: Is Out of Stock. Example - 21DBase. Derived boolean value. Calculated based on inventory feed from EBS to ATG, and current SKUs sold count since the last inventory synchronization |//
+      "eligibleForOutOfStock": false, //| BCC Field - Product: OutOfStockProduct. Example - 21DBase. Curated boolean option to include in inventory feed from EBS to ATG to determine whether Product/SKUs are Out of Stock |//
       "type": "", //| TODO: Is this mapped to kitType ?  |//
       "isInventoryStockAvailable": "", //| TODO: Will check to see if this is the same as isOutOfStock |//
-      "dailyNutrition": false, //| Curated meta data. Tagged in the PIM |//
-      "isNew": false, //| Derived boolean value in ATG based on the start_date <= (SYSDATE() - 60 Days) |//
-      "isOnSale": false, //| Derived boolean value in ATG. Calculated by comparing the PriceList (managed in EBS) with the SalePricelist (managed in the BCC) |//
-      "visibleInStore": true, //| Curated boolean option to show/hide Products in the eCommerce user facing websites as an override. Controlled in the BCC |//
-      "isBestSeller": false, //| Curated boolean meta data. Tagged in the PIM |//
-      "isLowInventory": false, //| TODO: Is this derived based on actual inventory? What is the relationship to the SKU stock attribute?  |//
-      "dateAvailable": "2011-08-12T20:17:46.384Z", //| Zulu (ISO 8061) |//
-      "endDate": "2011-08-12T20:17:46.384Z", //| Maintained in the PIM to end_date Product for both eCommerce initial sales as well as Customer Service support of existing sales. Zulu (ISO 8061) |//
-      "isBOD": false,
-      "performanceNutrition": "",
-      "program": "", //| Grouping of Products by Brand/Trainer (e.g. Curated meta data. Tagged in the PIM |//
-      "flavor": "", //| Curated meta data. Tagged in the PIM |//
-      "active": false, //| Applies to both the Product & SKU. Derived value |//
-      "daysAvailable": 206,
+      "dailyNutrition": false, //| BCC Field - Nutrition Product: Daily Nutrition. Example - 3DComplete. Curated meta data. Tagged in the PIM |//
+      "isNew": false, //| BCC Field - Product: Is New. Example - 21DBase. Derived boolean value in ATG based on the Date Available <= (SYSDATE() - 60 Days) |//
+      "isOnSale": false, //| BCC Field - Product: Is On Sale. Example - 21DBase. Derived boolean value in ATG. Calculated by comparing the PriceList (managed in EBS) with the SalePricelist (managed in the BCC) |//
+      "visibleInStore": true, //| BCC Field - Product: Visible In Store. Example - 21DBase. Curated boolean option to show/hide Products in the eCommerce user facing websites as an override. Controlled in the BCC |//
+      "isBestSeller": false, //| BCC Field - Product: Is Best Seller. Example - 21DBase. Curated boolean meta data. Tagged in the PIM |//
+      "isLowInventory": false, //| BCC Field - Product: LowInventoryProduct. Example - 21DBase. Calculated in EBS and propagated to BCC at the SKU level, attribute of Low Inventory or Not calculated at the Product level  |//
+      "dateAvailable": "2011-08-12T20:17:46.384Z", //| BCC Field - Product: Date available. Example - 21DBase. Zulu (ISO 8061) |//
+      "endDate": "2011-08-12T20:17:46.384Z", //| ToDo: Is this exposed in the BCC or just in Dynadmin? Maintained in the PIM to end_date Product for both eCommerce initial sales as well as Customer Service support of existing sales. Zulu (ISO 8061) |//
+      "isBOD": false, //| ToDo: Is this exposed in the BCC or just in Dynadmin? |//
+      "performanceNutrition": "", //| BCC Field - Nutrition Product: Performance Nutrition Default. Example - BBPAdvStackChoc |//
+      "program": "", //| BCC Field - Product Options: Program: Featured Products association. Example - Fitness Program ID: 21DayFix. Grouping of Products by Brand/Trainer (e.g. Curated meta data. Tagged in the PIM |//
+      "flavor": "", //| BCC Field - Nutrition Product: Flavor. Example - BBPAdvStackChoc. Curated meta data. Tagged in the PIM |//
+      "active": false, //| WCS Field - Product: Active, Product SKU: BB_sku_status. Examples: Product: 21DayFixBaseKit, Metadata ID: 1408699428538 / Product SKU: MD21DDVD2109, Metadata ID: 1408699428551. Applies to both the Product & SKU. Derived value |//
+      "daysAvailable": 206, //| BCC Field - Product: Days available. Example - BBPAdvStackChoc |//
       "benefits": [    //| Benefit tabs with Copy and/or Images. Standardized format for any of the following WCS module asset definitions: TAB_ImageText, TAB_OneColumn, TAB_TwoColumn, TAB_Nutrition, TAB_Recipe, TAB_TileContainer, TAB_Shakeology_TileContainer |//
         {
 	"title": "", //| Field type: HTML, Field length: 255 characters |//
