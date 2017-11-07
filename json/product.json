@@ -21,16 +21,16 @@
           }
       ],
       "category": {
-        "productTitle": "Chocolate", //| Product title on Category page. Distinct from Product title on Product page. Fallback to Simple Product Name Default syndicated from PIM to ATG. Field type: HTML, Field length: 100 characters |//
-        "productDescription": "", //| Product copy/text description on Category page. On Wave 1, also used for Product copy/text description in Cart/Checkout. Uses WCS attribute CDP Short Description. Field type: HTML, Field length: 400 characters |//
+        "productTitle": "Chocolate", //| WCS Field - Product: CDP Product Title. Example - Product: 21DayFixBaseKit, Metadata ID: 1408699428538. Product title on Category page. Distinct from Product title on Product page. Fallback to Simple Product Name Default syndicated from PIM to ATG. Field type: HTML, Field length: 100 characters |//
+        "productDescription": "", //| WCS Field - Product: CDP Short Description. Example - Product: 21DayFixBaseKit, Metadata ID: 1408699428538. Product copy/text description on Category page. On Wave 1, also used for Product copy/text description in Cart/Checkout. Uses WCS attribute CDP Short Description. Field type: HTML, Field length: 400 characters |//
         "categories": [ //| Category that the Product is assigned to. Based on Endeca's Product to Category association, not the BCC/WCS Product to Category association |//
           {
-            "id": "123", //| ATG Category ID |//
-            "title": "Fitness, Nutrition, etc.",
-            "subCategory": [ //| SubCategory that the Product is assigned to |//
+            "id": "123", //| ToDo: This may not be relevant is the Category ID is a Name. Endeca Field - TBD. ATG Category ID |//
+            "title": "Fitness, Nutrition, etc.", //| BCC Field - Category ID. Example - Fitness. |//
+            "subCategory": [ //| BCC Field - Category: Fixed child categories. Example - Apparel. SubCategory that the Product is assigned to |//
               {
-                "id": "123", //| ATG Category ID |//
-                "title": "Fitness, Nutrition, etc."
+                "id": "123", //| ToDo: This may not be relevant is the Category ID is a Name. ATG Category ID |//
+                "title": "Fitness, Nutrition, etc." //| BCC Field - Category ID. Example - Fitness. |//
               }
             ] 
           }
