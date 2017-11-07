@@ -9,15 +9,15 @@
     "id": "productId", //| PIM Product ID. Returns full Response for each valid Product ID, and error message for each invalid Product ID along with the invalid Product ID. Invalid Product IDs do not fail the entire Response for valid Product IDs |//
       "media": [
           { //| Question - Examples: main, etc. Does WCS/ATG have groupings other than main? Answer: WCS/ATG differentiates between Category Detail Page images and Product Detail Page imagesv
-            "type": "main, thumbnail", //| WCS Field - Image: Main Image / Thumbnail Image. Example Image: 21 Day Fix Base Kit PDP, Metadata ID: 1408686357132. |//
-            "mediaType": "video, image, pdf, word, etc",
-            "url": "http://img1.beachbodyimages.com/...", //| Full URL path images, pdfs, Word documents. Does not apply to videos |//
-            "parentId": "123456", //| Used to associate thumbnail content (i.e. images, title) with main content (images, videos) |//
-            "title": "", //| Media title/caption. Applicable for videos. Field type: text, Field length: 255 characters |//
-            "source": "cloudinary, brightcove, youtube, etc.", //| Field type: text |//
-            "version": "123456", //| CDN caching version |//
-            "id": "123456", //| Cloudinary ID or BrightCove or YouTube video ID for embedded players. Not a full URL/URIc |//
-            "altText": "" //| SEO or ADA (Americas With Disabilities Act) alt tag. Field type: text, Field length: 255 characters |//
+            "type": "main, thumbnail", //| WCS Field - Image: Main Image / Thumbnail Image. Example - Image: 21 Day Fix Base Kit PDP, Metadata ID: 1408686357132. |//
+            "mediaType": "video, image, pdf, word, etc", //| WCS Field - Cloudinary Image Meta Data: Media Content Definition / Product Video: Media Content Definition. Examples - Cloudinary Image Meta Data: 21df-base-kit-pdp-930x960-us-english-062016, Metadata ID: 1408469599974 / Product Video: YouTube Video Test - Product Video, Metadata ID: 1409108833676. |//
+            "url": "http://img1.beachbodyimages.com/...", //| WCS Field - Cloudinary Image Meta Data: Cloudinary Image URL / Link: Link Href. Examples - Image: Cloudinary Image Meta Data: 21df-base-kit-pdp-930x960-us-english-062016, Metadata ID: 1408469599974 / Link: Shakeology Strawberry - PDF Link - Ingredients - en_US, Metadata ID: 1408796756818. Full URL path images, pdfs, Word documents. Does not apply to videos |//
+            "parentId": "123456", //| Respository field - TBD. Used to associate thumbnail content (i.e. images, title) with main content (images, videos) |//
+            "title": "", //| WCS Field - Video: Caption. Example - Video: YouTube Video Test, Metadata ID: 1409108838947. Media caption. Applicable for videos. Field type: text, Field length: 255 characters |//
+            "source": "cloudinary, brightcove, youtube, etc.", //| WCS Field - Cloudinary Image Meta Data: Cloudinary Version / Video: Video Type. Examples - Cloudinary Image Meta Data: 21df-base-kit-pdp-930x960-us-english-062016, Metadata ID: 1408469599974 / Video: YouTube Video Test, Metadata ID: 1409108838947. Field type: text |//
+            "version": "123456", //| WCS Field - Cloudinary Image Meta Data: Cloudinary Version. Example - Cloudinary Image Meta Data: 21df-base-kit-pdp-930x960-us-english-062016, Metadata ID: 1408469599974. CDN caching version |//
+            "id": "123456", //| WCS Field - Video: Video ID. Example - Video: YouTube Video Test, Metadata ID: 1409108838947. BrightCove or YouTube video ID for embedded players. Not a full URL/URIc |//
+            "altText": "" //| WCS Field - Cloudinary Image Meta Data: Media Alt Text / Video: Media Alt Text. Examples - Cloudinary Image Meta Data: 21df-base-kit-pdp-930x960-us-english-062016, Metadata ID: 1408469599974 / Video: YouTube Video Test, Metadata ID: 1409108838947. SEO or ADA (Americas With Disabilities Act) alt tag. Field type: text, Field length: 255 characters |//
           }
       ],
       "category": {
