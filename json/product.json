@@ -81,49 +81,49 @@
 	}
       ],
     "successStories": {
-        "title": "What will YOUR success look like?", //| Success Stories overall section title. Distinct from individual Success Story Profile titles. Field type: HTML, Field length: 256 characters |//
-        "description": "", //| Success Stories overall section description. Distinct from individual Success Story Profile descriptions. Field type: HTML, Field length: 4000 characters |//
-        "disclaimer": "", //|  Success Stories overall section disclaimer. Distinct from individual Success Story Profile disclaimer. Field type: HTML, Field length: 4000 characters |//
+        "title": "What will YOUR success look like?", //| WCS Field - Product: Success Stories Title. Example - Product: ShakeologyStrawberry, Metadata ID: 1408457818705. Success Stories overall section title. Distinct from individual Success Story Profile titles. Field type: HTML, Field length: 256 characters |//
+        "description": "", //| WCS Field - Product: Success Stories Content. Example - Product: ShakeologyStrawberry, Metadata ID: 1408457818705. Success Stories overall section description. Distinct from individual Success Story Profile descriptions. Field type: HTML, Field length: 4000 characters |//
+        "disclaimer": "", //|  WCS Field - Product: Success Stories Disclaimer. Example - Product: ShakeologyStrawberry, Metadata ID: 1408457818705. Success Stories overall section disclaimer. Distinct from individual Success Story Profile disclaimer. Field type: HTML, Field length: 4000 characters |//
 	"profiles": [
           {
-          "title": "Amanda Y.",
-          "url": "http://|img1.beachbodyimages.com/...", //| Full URL path to image |//
-	  "story": "\"Shakeology has changed my life! It has provided me with nutrients that I would never get otherwise.\"", //| Success Story user's testimonial / quote |//
-	  "disclaimer": "Amanda is an independent Beachbody Coach.", //| Success Story user's disclaimer |//
+          "title": "Amanda Y.", //| WCS Field - Success Profile: Profile Name. Example - Success Profile: Shakeology - Global - Sandra C. - en_US, Metadata ID: 1408606024709. |//
+          "url": "http://|img1.beachbodyimages.com/...", //| WCS Field - Cloudinary Image Meta Data: Cloudinary Image URL. Example - Cloudinary Image Meta Data: shk-success-story-w-councell-sandra-370x360-us-english-061616, Metadata ID: 1408469637306. Full URL path to image |//
+	  "story": "\"Shakeology has changed my life! It has provided me with nutrients that I would never get otherwise.\"", //| WCS Field - Success Profile: Profile Story. Example - Success Profile: Shakeology - Global - Sandra C. - en_US, Metadata ID: 1408606024709. WCS Field - Success Profile: Disclaimer Title. Example - Success Profile: Shakeology - Global - Sandra C. - en_US, Metadata ID: 1408606024709. Success Story user's testimonial / quote |//
+	  "disclaimer": "Amanda is an independent Beachbody Coach.", //| WCS Field - Success Profile: Disclaimer Title. Example - Success Profile: Shakeology - Global - Sandra C. - en_US, Metadata ID: 1408606024709. Success Story user's disclaimer |//
 	  "attributes": [
 	    {
-	    "LOST 81 LBS. in 6 months" //| Description of archievements. Field type: HTML, Field length: 255 characters |//
+	    "LOST 81 LBS. in 6 months" //| WCS Field - Success Profile: Profile Success. Example - Success Profile: Shakeology - Global - Sandra C. - en_US, Metadata ID: 1408606024709. Description of archievements. Field type: HTML, Field length: 255 characters |//
 	    }
 	  ]
 	}
        ] 
       },
-      "testimonialTitle" : "", //| Name of user who submitted the Product Testimonial or Quote. Field type: HTML, Field length: 255 characters |//
-      "testimonialDescription" : "", //| Product Testimonial or Quote. Field type: HTML, Field length: 4000 characters |//
-      "testimonialLocation : "", //| Location of user who submitted the Product Testimonial or Quote. Field type: HTML, Field length: 255 characters |//
-      "onSiteSearchKeywords": [ //| Keywords associated with this Product. Managed in Endeca |//
+      "testimonialTitle" : "", //| WCS Field - Featured Testimonial Module: Author. Example - Featured Testimonial Module: Shakeology - Global - Testimonial - Jodi C. - en_US, Metadata ID: 1408638914456. Name of user who submitted the Product Testimonial or Quote. Field type: HTML, Field length: 255 characters |//
+      "testimonialDescription" : "", //| WCS Field - Featured Testimonial Module: Description. Example - Featured Testimonial Module: Shakeology - Global - Testimonial - Jodi C. - en_US, Metadata ID: 1408638914456. Product Testimonial or Quote. Field type: HTML, Field length: 4000 characters |//
+      "testimonialLocation : "", //| WCS Field - Featured Testimonial Module: Location. Example - Featured Testimonial Module: Shakeology - Global - Testimonial - Jodi C. - en_US, Metadata ID: 1408638914456. Location of user who submitted the Product Testimonial or Quote. Field type: HTML, Field length: 255 characters |//
+      "onSiteSearchKeywords": [ //| ToDo: Map the Endeca source. Keywords associated with this Product. Managed in Endeca |//
         "fitness",
         "nutrition",
         "sandwiches"
       ],  
-      "metaTitle": "", //| SEO Meta Tag for Title. Field type: HTML, Field length: 255 characters |//
-      "metaKeywords": "", //| SEO Meta Tag for Keywords. Field type: HTML, Field length: 255 characters |//
-      "metaDescription": "", //| SEO Meta Tag for Description. Field type: HTML, Field length: 255 characters |//
-      "metaRobots": "", //| SEO Meta Tag for Robots. Field type: HTML, Field length: 255 characters |//
-      "promotionalMessage" : "", //| Temporary promotional copy. Field type: HTML, Field length: 250 characters |//
+      "metaTitle": "", //| WCS Field - Meta Data: Meta Title. Example - Meta Data: Shakeology Strawberry - Meta Data _en_US, Metadata ID: 1408638915453. SEO Meta Tag for Title. Field type: HTML, Field length: 255 characters |//
+      "metaKeywords": "", //| WCS Field - Meta Keywords: Meta Title. Example - Meta Data: Shakeology Strawberry - Meta Data _en_US, Metadata ID: 1408638915453. SEO Meta Tag for Keywords. Field type: HTML, Field length: 255 characters |//
+      "metaDescription": "", //| WCS Field - Meta Description: Meta Title. Example - Meta Data: Shakeology Strawberry - Meta Data _en_US, Metadata ID: 1408638915453. SEO Meta Tag for Description. Field type: HTML, Field length: 255 characters |//
+      "metaRobots": "", //| WCS Field - Meta Robots: Meta Title. Example - Meta Data: Shakeology Strawberry - Meta Data _en_US, Metadata ID: 1408638915453. SEO Meta Tag for Robots. Field type: HTML, Field length: 255 characters |//
+      "promotionalMessage" : "", //| WCS Field - Product: Promotion Message. Example - Product: 21DayFixShakeologyChallengePack, Metadata ID: 1408457800589. Temporary promotional copy. Field type: HTML, Field length: 250 characters |//
       "disclaimers": [ //| Product Global disclaimers that are returned for all Digital Properies (e.g. Wave 1, BOD, Apple). Order set by rank order in BCC |//
-        "Shakeology Subscription: Starting in 30 days...", //| Content & Sort order maintained in WSC. Product / SKU mapping maintained in BCC |//
-        "Beachbody On Demand Membership: After your free 30-day trial..."
+        "Shakeology Subscription: Starting in 30 days...", //| WCS Field - Product Disclaimer: Disclaimer Body. Example - Product Disclaimer: Shakeology - Continuity - Disclaimer - en_US, Metadata ID: 1409028021209. BCC Field - Disclaimer Types. Example - Product: SHKStrawberry. Content & Sort order maintained in WSC. Product / SKU mapping maintained in BCC |//
+        "Beachbody On Demand Membership: After your free 30-day trial..." //| Same as above disclaimer, returned in Sort Order |//
       ],
       "digitalPropertyDisclaimers": [ //| Product Digital Property specific disclaimers that are only returned for digitalProperty in the API Request (e.g. Apple). Order set by rank order for that Digital Property in BCC |//
-        "Apple Shakeology Subscription: Starting in 30 days...", //| Content & Sort order maintained in WSC. Product / SKU mapping maintained in BCC |//
-        "Apple Beachbody On Demand Membership: After your free 30-day trial..."
+        "Apple Shakeology Subscription: Starting in 30 days...", //| ToDo: Develop this in the BCC. Content & Sort order maintained in WSC. Product / SKU mapping maintained in BCC |//
+        "Apple Beachbody On Demand Membership: After your free 30-day trial..."  //| Same as above digitalPropertyDisclaimers, returned in Sort Order |//
       ],
         "childSKUs": [
         { 
-	"id": "MDSHK0202N1E102"
-	"type": "main, configurableOption, addOn", //| main = Configurable Option main (header) SKU, configurableOption = mandatory selection, addOn = added to Cart without user's selection |//
-	"parentId": "MDBCPBOD", //| Used to associate Configurable SKU childSKUs with parent SKU |//
+	"id": "MDSHK0202N1E102", //| WCS Field - Product SKU: SKU. Example - Product SKU: MDSHK0206N1S101, Metadata ID: 1408457818709. |//
+	"type": "main, configurableOption, addOn", //| ToDo: Add Configurable SKU mappings from BCC. main = Configurable Option main (header) SKU, configurableOption = mandatory selection, addOn = added to Cart without user's selection |//
+	"parentId": "MDBCPBOD", //| ToDo: Add Configurable SKU mappings from BCC. Used to associate Configurable SKU childSKUs with parent SKU |//
 	}
       ]
     }
