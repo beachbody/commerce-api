@@ -56,24 +56,24 @@
       "flavor": "", //| BCC Field - Nutrition Product: Flavor. Example - BBPAdvStackChoc. Curated meta data. Tagged in the PIM |//
       "active": false, //| WCS Field - Product: Active, Product SKU: BB_sku_status. Examples: Product: 21DayFixBaseKit, Metadata ID: 1408699428538 / Product SKU: MD21DDVD2109, Metadata ID: 1408699428551. Applies to both the Product & SKU. Derived value |//
       "daysAvailable": 206, //| BCC Field - Product: Days available. Example - BBPAdvStackChoc |//
-      "benefits": [    //| Benefit tabs with Copy and/or Images. Standardized format for any of the following WCS module asset definitions: TAB_ImageText, TAB_OneColumn, TAB_TwoColumn, TAB_Nutrition, TAB_Recipe, TAB_TileContainer, TAB_Shakeology_TileContainer |//
+      "benefits": [    //| WCS Benefit tabs with Copy and/or Images. Standardized format for any of the following WCS module asset definitions: TAB_ImageText, TAB_OneColumn, TAB_TwoColumn, TAB_Nutrition, TAB_Recipe, TAB_TileContainer, TAB_Shakeology_TileContainer |//
         {
-	"title": "", //| Field type: HTML, Field length: 255 characters |//
-	"heading": "", //| Field type: HTML, Field length: 255 characters |//
+	"title": "", //| WCS Field - * Tab *: Tab Title. Examples - Two Column Tab Content: Core Comfort Mat - Benefit - About - en_US, Metadata ID: 1408864503784 / Image and Text Tab: Benefit - Guarantee - Global - 30 Day - en_US, Metadata ID: 1408618476672. Field type: HTML, Field length: 255 characters |//
+	"heading": "", //| WCS Field - * Tab *: Heading. Examples - Two Column Tab Content: Core Comfort Mat - Benefit - About - en_US, Metadata ID: 1408864503784 / Image and Text Tab: Benefit - Guarantee - Global - 30 Day - en_US, Metadata ID: 1408618476672. Field type: HTML, Field length: 255 characters |//
    	"modules": [ //| Columns or Tiles in sequential order |//
          {
-         "title": "", //| Field type: HTML, Field length: 255 characters |//
+         "title": "", //| WCS Field - Asset container for Recipes and Nutrition: Tab Title. Example - Asset container for Recipes and Nutrition: Shakeology Strawberry - Benefit - Recipe - en_US, Metadata ID: 1409021065630. Field type: HTML, Field length: 255 characters |//
 	 "media": [
 	   {
-	    "type": "main, background", 
-	    "mediaType": "video, image, pdf, word, etc",
-	    "http://img1.beachbodyimages.com/..." //| Full URL path images, pdfs, Word documents. Does not apply to videos |//
+	    "type": "main, background", //| WCS Field - Recipe Asset: Recipe Image / Recipe Asset: Recipe Background Image / Nutrition Tab Asset: Nutrition Image / Nutrition Tab Asset: Document Link (PDF). Examples - Recipe Asset: SHK Strawberry - Benefit - Recipe Tile - Simply Strwbry - en_US, Metadata ID: 1409021021658 / Nutrition Tab Asset: Shakeology Strawberry - Benefit - Ingredient Tile - en_US, Metadata ID: 1408796758877. |//
+	    "mediaType": "video, image, pdf, word, etc", //| WCS Field - Module Content Definition: BB_Product_Image / Module Content Definition: BB_Link / Media Content Definition: BB_Video. Examples - Image: SHK Strawberry - Benefit - Recipe Img - Simply Strwbry - en_US, Metadata ID: 1409025092456 / Link: Shakeology Strawberry - PDF Link - Ingredients - en_US, Metadata ID: 1408796756818 / Video: YouTube Video Test, Metadata ID: 1409108838947. |//
+	    "http://img1.beachbodyimages.com/..." //| WCS Field - Cloudinary Image Meta Data: Cloudinary Image URL / Link: Link Href. Examples - Image: Cloudinary Image Meta Data: 21df-base-kit-pdp-930x960-us-english-062016, Metadata ID: 1408469599974 / Link: Shakeology Strawberry - PDF Link - Ingredients - en_US, Metadata ID: 1408796756818. Full URL path images, pdfs, Word documents. Does not apply to videos |//
 	   }
 	   ],
-	 "description": "Why You’ll Love Drinking Shakeology..." //| Description of module benefits. Field type: HTML, Field length: 4000 characters |//
+	 "description": "Why You’ll Love Drinking Shakeology..." //| ToDo: Is this needed as separate from the attributes section below? Description of module benefits. Field type: HTML, Field length: 4000 characters |//
          "attributes": [
 	   {
-	    "description": "1 serving Café Latte Shakeology"  //| Description of ingredients. Field type: HTML, Field length: 255 characters |//
+	    "description": "1 serving Café Latte Shakeology"  //| WCS Field - Two Column Tab Content: First Column / Two Column Tab Content: Second Column / Image and Text Tab: Benefits Tab Body / Recipe Asset: Recipe Ingredients / Recipe Asset: Additional Text. Examples: Two Column Tab Content: Shakeology Strawberry - Benefit - About - en_US, Metadata ID: 1408668509900 / Image and Text Tab: Benefit - Guarantee - Global - Shakeology - 30 Day - en_US, Metadata ID: 1408740472809 / Recipe Asset: SHK Strawberry - Benefit - Recipe Tile - Simply Strwbry - en_US, Metadata ID: 1409021021658. Description of ingredients. Field type: HTML, Field length: 255 characters |//
 	   }
 	   ]
           }
