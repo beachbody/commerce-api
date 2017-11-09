@@ -171,18 +171,33 @@ definitions:
         items:
           $ref: '#/definitions/Sku'
       category:
-        $ref: '#/definitions/Category'
+        $ref: '#/definitions/ProductCategory'
       media:
         type: array
         items:
           $ref: '#/definitions/Media'
-  Category:
+  ProductCategory:
     type: object
     properties:
       productTitle:
         type: string
       productDescription:
         type: string
+      categories:
+        type: array
+        items:
+          $ref: '#/definitions/Category'
+  Category:
+    type: object
+    properties:
+      id:
+        type: string
+      title:
+        type: string
+      subCategories:
+        type: array
+        items:
+          $ref: '#/definitions/Category'
   Sku:
     type: object
     properties:
@@ -208,8 +223,14 @@ definitions:
         type: boolean
       maxCartQty:
         type: integer
+      parentProducts:
+        type: array
+        items:
+          $ref: '#/definitions/Product'
       prices:
         $ref: '#/definitions/Price'
+      coachBonusAttributes:
+        $ref: '#/definitions/BonusAttributes'
   Price:
     type: object
     properties:
@@ -217,7 +238,18 @@ definitions:
         type: string
       retailPrice:
         type: number
-      coachPrice:
+      userSegmentPrice:
+        type: number
+      promotionPrice:
+        type: number
+      specialOfferPrice:
+        type: number
+  BonusAttributes:
+    type: object
+    properties:
+      personalVolume:
+        type: number
+      commissionVolume:
         type: number
   Media:
     type: object
