@@ -9,71 +9,71 @@
     "id": "productId", //| PIM Product ID. Returns full Response for each valid Product ID, and error message for each invalid Product ID along with the invalid Product ID. Invalid Product IDs do not fail the entire Response for valid Product IDs |//
       "media": [
           { //| Question - Examples: main, etc. Does WCS/ATG have groupings other than main? Answer: WCS/ATG differentiates between Category Detail Page images and Product Detail Page imagesv
-            "type": "main, thumbnail",
-            "mediaType": "video, image, pdf, word, etc",
-            "url": "http://img1.beachbodyimages.com/...", //| Full URL path images, pdfs, Word documents. Does not apply to videos |//
-            "parentId": "123456", //| Used to associate thumbnail content (i.e. images, title) with main content (images, videos) |//
-            "title": "", //| Media title/caption. Applicable for videos. Field type: text, Field length: 255 characters |//
-            "source": "cloudinary, brightcove, youtube, etc.", //| Field type: text |//
-            "version": "123456", //| CDN caching version |//
-            "id": "123456", //| Cloudinary ID or BrightCove or YouTube video ID for embedded players. Not a full URL/URIc |//
-            "altText": "" //| SEO or ADA (Americas With Disabilities Act) alt tag. Field type: text, Field length: 255 characters |//
+            "type": "main, thumbnail", //| WCS Field - Image: Main Image / Thumbnail Image. Example - Image: 21 Day Fix Base Kit PDP, Metadata ID: 1408686357132. |//
+            "mediaType": "video, image, pdf, word, etc", //| WCS Field - Cloudinary Image Meta Data: Media Content Definition / Product Video: Media Content Definition. Examples - Cloudinary Image Meta Data: 21df-base-kit-pdp-930x960-us-english-062016, Metadata ID: 1408469599974 / Product Video: YouTube Video Test - Product Video, Metadata ID: 1409108833676. |//
+            "url": "http://img1.beachbodyimages.com/...", //| WCS Field - Cloudinary Image Meta Data: Cloudinary Image URL / Link: Link Href. Examples - Image: Cloudinary Image Meta Data: 21df-base-kit-pdp-930x960-us-english-062016, Metadata ID: 1408469599974 / Link: Shakeology Strawberry - PDF Link - Ingredients - en_US, Metadata ID: 1408796756818. Full URL path images, pdfs, Word documents. Does not apply to videos |//
+            "parentId": "123456", //| Respository field - TBD. Used to associate thumbnail content (i.e. images, title) with main content (images, videos) |//
+            "title": "", //| WCS Field - Video: Caption. Example - Video: YouTube Video Test, Metadata ID: 1409108838947. Media caption. Applicable for videos. Field type: text, Field length: 255 characters |//
+            "source": "cloudinary, brightcove, youtube, etc.", //| WCS Field - Cloudinary Image Meta Data: Cloudinary Version / Video: Video Type. Examples - Cloudinary Image Meta Data: 21df-base-kit-pdp-930x960-us-english-062016, Metadata ID: 1408469599974 / Video: YouTube Video Test, Metadata ID: 1409108838947. Field type: text |//
+            "version": "123456", //| WCS Field - Cloudinary Image Meta Data: Cloudinary Version. Example - Cloudinary Image Meta Data: 21df-base-kit-pdp-930x960-us-english-062016, Metadata ID: 1408469599974. CDN caching version |//
+            "id": "123456", //| WCS Field - Video: Video ID. Example - Video: YouTube Video Test, Metadata ID: 1409108838947. BrightCove or YouTube video ID for embedded players. Not a full URL/URIc |//
+            "altText": "" //| WCS Field - Cloudinary Image Meta Data: Media Alt Text / Video: Media Alt Text. Examples - Cloudinary Image Meta Data: 21df-base-kit-pdp-930x960-us-english-062016, Metadata ID: 1408469599974 / Video: YouTube Video Test, Metadata ID: 1409108838947. SEO or ADA (Americas With Disabilities Act) alt tag. Field type: text, Field length: 255 characters |//
           }
       ],
       "category": {
-        "productTitle": "Chocolate", //| Product title on Category page. Distinct from Product title on Product page. Fallback to Simple Product Name Default syndicated from PIM to ATG. Field type: HTML, Field length: 100 characters |//
-        "productDescription": "", //| Product copy/text description on Category page. On Wave 1, also used for Product copy/text description in Cart/Checkout. Uses WCS attribute CDP Short Description. Field type: HTML, Field length: 400 characters |//
+        "productTitle": "Chocolate", //| WCS Field - Product: CDP Product Title. Example - Product: 21DayFixBaseKit, Metadata ID: 1408699428538. Product title on Category page. Distinct from Product title on Product page. Fallback to Simple Product Name Default syndicated from PIM to ATG. Field type: HTML, Field length: 100 characters |//
+        "productDescription": "", //| WCS Field - Product: CDP Short Description. Example - Product: 21DayFixBaseKit, Metadata ID: 1408699428538. Product copy/text description on Category page. On Wave 1, also used for Product copy/text description in Cart/Checkout. Uses WCS attribute CDP Short Description. Field type: HTML, Field length: 400 characters |//
         "categories": [ //| Category that the Product is assigned to. Based on Endeca's Product to Category association, not the BCC/WCS Product to Category association |//
           {
-            "id": "123", //| ATG Category ID |//
-            "title": "Fitness, Nutrition, etc.",
-            "subCategory": [ //| SubCategory that the Product is assigned to |//
+            "id": "123", //| ToDo: This may not be relevant is the Category ID is a Name. Endeca Field - TBD. ATG Category ID |//
+            "title": "Fitness, Nutrition, etc.", //| BCC Field - Category ID. Example - Fitness. |//
+            "subCategory": [ //| BCC Field - Category: Fixed child categories. Example - Apparel. SubCategory that the Product is assigned to |//
               {
-                "id": "123", //| ATG Category ID |//
-                "title": "Fitness, Nutrition, etc."
+                "id": "123", //| ToDo: This may not be relevant is the Category ID is a Name. ATG Category ID |//
+                "title": "Fitness, Nutrition, etc." //| BCC Field - Category ID. Example - Fitness. |//
               }
             ] 
           }
         ]
       },
-      "title": "", //| Product title on Product page. Distinct from Product title on Category page. Fallback to Simple Product Name Default syndicated from PIM to ATG. Field type: HTML, Field length: 100 characters |//
-      "description": "", //| Product copy/text description on Product page. Uses WCS attribute PDP Short Description. Field type: HTML, Field length: 400 characters |//
-      "isOutOfStock": false, //| Derived boolean value. Calculated based on inventory feed from EBS to ATG, and current SKUs sold count since the last inventory synchronization |//
-      "eligibleForOutOfStock": false, //| Curated boolean option to include in inventory feed from EBS to ATG to determine whether Product/SKUs are Out of Stock |//
+      "title": "", //| WCS Field - Product: PDP Product Title. Example - Product: 21DayFixBaseKit, Metadata ID: 1408699428538. Product title on Product page. Distinct from Product title on Category page. Fallback to Simple Product Name Default syndicated from PIM to ATG. Field type: HTML, Field length: 100 characters |//
+      "description": "", //| WCS Field - Product: Short Description. Example - Product: 21DayFixBaseKit, Metadata ID: 1408699428538. Product copy/text description on Product page. Uses WCS attribute PDP Short Description. Field type: HTML, Field length: 400 characters |//
+      "isOutOfStock": false, //| BCC Field - Product: Is Out of Stock. Example - 21DBase. Derived boolean value. Calculated based on inventory feed from EBS to ATG, and current SKUs sold count since the last inventory synchronization |//
+      "eligibleForOutOfStock": false, //| BCC Field - Product: OutOfStockProduct. Example - 21DBase. Curated boolean option to include in inventory feed from EBS to ATG to determine whether Product/SKUs are Out of Stock |//
       "type": "", //| TODO: Is this mapped to kitType ?  |//
       "isInventoryStockAvailable": "", //| TODO: Will check to see if this is the same as isOutOfStock |//
-      "dailyNutrition": false, //| Curated meta data. Tagged in the PIM |//
-      "isNew": false, //| Derived boolean value in ATG based on the start_date <= (SYSDATE() - 60 Days) |//
-      "isOnSale": false, //| Derived boolean value in ATG. Calculated by comparing the PriceList (managed in EBS) with the SalePricelist (managed in the BCC) |//
-      "visibleInStore": true, //| Curated boolean option to show/hide Products in the eCommerce user facing websites as an override. Controlled in the BCC |//
-      "isBestSeller": false, //| Curated boolean meta data. Tagged in the PIM |//
-      "isLowInventory": false, //| TODO: Is this derived based on actual inventory? What is the relationship to the SKU stock attribute?  |//
-      "dateAvailable": "2011-08-12T20:17:46.384Z", //| Zulu (ISO 8061) |//
-      "endDate": "2011-08-12T20:17:46.384Z", //| Maintained in the PIM to end_date Product for both eCommerce initial sales as well as Customer Service support of existing sales. Zulu (ISO 8061) |//
-      "isBOD": false,
-      "performanceNutrition": "",
-      "program": "", //| Grouping of Products by Brand/Trainer (e.g. Curated meta data. Tagged in the PIM |//
-      "flavor": "", //| Curated meta data. Tagged in the PIM |//
-      "active": false, //| Applies to both the Product & SKU. Derived value |//
-      "daysAvailable": 206,
-      "benefits": [    //| Benefit tabs with Copy and/or Images. Standardized format for any of the following WCS module asset definitions: TAB_ImageText, TAB_OneColumn, TAB_TwoColumn, TAB_Nutrition, TAB_Recipe, TAB_TileContainer, TAB_Shakeology_TileContainer |//
+      "dailyNutrition": false, //| BCC Field - Nutrition Product: Daily Nutrition. Example - 3DComplete. Curated meta data. Tagged in the PIM |//
+      "isNew": false, //| BCC Field - Product: Is New. Example - 21DBase. Derived boolean value in ATG based on the Date Available <= (SYSDATE() - 60 Days) |//
+      "isOnSale": false, //| BCC Field - Product: Is On Sale. Example - 21DBase. Derived boolean value in ATG. Calculated by comparing the PriceList (managed in EBS) with the SalePricelist (managed in the BCC) |//
+      "visibleInStore": true, //| BCC Field - Product: Visible In Store. Example - 21DBase. Curated boolean option to show/hide Products in the eCommerce user facing websites as an override. Controlled in the BCC |//
+      "isBestSeller": false, //| BCC Field - Product: Is Best Seller. Example - 21DBase. Curated boolean meta data. Tagged in the PIM |//
+      "isLowInventory": false, //| BCC Field - Product: LowInventoryProduct. Example - 21DBase. Calculated in EBS and propagated to BCC at the SKU level, attribute of Low Inventory or Not calculated at the Product level  |//
+      "dateAvailable": "2011-08-12T20:17:46.384Z", //| BCC Field - Product: Date available. Example - 21DBase. Zulu (ISO 8061) |//
+      "endDate": "2011-08-12T20:17:46.384Z", //| ToDo: Is this exposed in the BCC or just in Dynadmin? Maintained in the PIM to end_date Product for both eCommerce initial sales as well as Customer Service support of existing sales. Zulu (ISO 8061) |//
+      "isBOD": false, //| ToDo: Is this exposed in the BCC or just in Dynadmin? |//
+      "performanceNutrition": "", //| BCC Field - Nutrition Product: Performance Nutrition Default. Example - BBPAdvStackChoc |//
+      "program": "", //| BCC Field - Product Options: Program: Featured Products association. Example - Fitness Program ID: 21DayFix. Grouping of Products by Brand/Trainer (e.g. Curated meta data. Tagged in the PIM |//
+      "flavor": "", //| BCC Field - Nutrition Product: Flavor. Example - BBPAdvStackChoc. Curated meta data. Tagged in the PIM |//
+      "active": false, //| WCS Field - Product: Active, Product SKU: BB_sku_status. Examples: Product: 21DayFixBaseKit, Metadata ID: 1408699428538 / Product SKU: MD21DDVD2109, Metadata ID: 1408699428551. Applies to both the Product & SKU. Derived value |//
+      "daysAvailable": 206, //| BCC Field - Product: Days available. Example - BBPAdvStackChoc |//
+      "benefits": [    //| WCS Benefit tabs with Copy and/or Images. Standardized format for any of the following WCS module asset definitions: TAB_ImageText, TAB_OneColumn, TAB_TwoColumn, TAB_Nutrition, TAB_Recipe, TAB_TileContainer, TAB_Shakeology_TileContainer |//
         {
-	"title": "", //| Field type: HTML, Field length: 255 characters |//
-	"heading": "", //| Field type: HTML, Field length: 255 characters |//
+	"title": "", //| WCS Field - * Tab *: Tab Title. Examples - Two Column Tab Content: Core Comfort Mat - Benefit - About - en_US, Metadata ID: 1408864503784 / Image and Text Tab: Benefit - Guarantee - Global - 30 Day - en_US, Metadata ID: 1408618476672. Field type: HTML, Field length: 255 characters |//
+	"heading": "", //| WCS Field - * Tab *: Heading. Examples - Two Column Tab Content: Core Comfort Mat - Benefit - About - en_US, Metadata ID: 1408864503784 / Image and Text Tab: Benefit - Guarantee - Global - 30 Day - en_US, Metadata ID: 1408618476672. Field type: HTML, Field length: 255 characters |//
    	"modules": [ //| Columns or Tiles in sequential order |//
          {
-         "title": "", //| Field type: HTML, Field length: 255 characters |//
+         "title": "", //| WCS Field - Asset container for Recipes and Nutrition: Tab Title. Example - Asset container for Recipes and Nutrition: Shakeology Strawberry - Benefit - Recipe - en_US, Metadata ID: 1409021065630. Field type: HTML, Field length: 255 characters |//
 	 "media": [
 	   {
-	    "type": "main, background", 
-	    "mediaType": "video, image, pdf, word, etc",
-	    "http://img1.beachbodyimages.com/..." //| Full URL path images, pdfs, Word documents. Does not apply to videos |//
+	    "type": "main, background", //| WCS Field - Recipe Asset: Recipe Image / Recipe Asset: Recipe Background Image / Nutrition Tab Asset: Nutrition Image / Nutrition Tab Asset: Document Link (PDF). Examples - Recipe Asset: SHK Strawberry - Benefit - Recipe Tile - Simply Strwbry - en_US, Metadata ID: 1409021021658 / Nutrition Tab Asset: Shakeology Strawberry - Benefit - Ingredient Tile - en_US, Metadata ID: 1408796758877. |//
+	    "mediaType": "video, image, pdf, word, etc", //| WCS Field - Module Content Definition: BB_Product_Image / Module Content Definition: BB_Link / Media Content Definition: BB_Video. Examples - Image: SHK Strawberry - Benefit - Recipe Img - Simply Strwbry - en_US, Metadata ID: 1409025092456 / Link: Shakeology Strawberry - PDF Link - Ingredients - en_US, Metadata ID: 1408796756818 / Video: YouTube Video Test, Metadata ID: 1409108838947. |//
+	    "http://img1.beachbodyimages.com/..." //| WCS Field - Cloudinary Image Meta Data: Cloudinary Image URL / Link: Link Href. Examples - Image: Cloudinary Image Meta Data: 21df-base-kit-pdp-930x960-us-english-062016, Metadata ID: 1408469599974 / Link: Shakeology Strawberry - PDF Link - Ingredients - en_US, Metadata ID: 1408796756818. Full URL path images, pdfs, Word documents. Does not apply to videos |//
 	   }
 	   ],
-	 "description": "Why You’ll Love Drinking Shakeology..." //| Description of module benefits. Field type: HTML, Field length: 4000 characters |//
+	 "description": "Why You’ll Love Drinking Shakeology..." //| ToDo: Is this needed as separate from the attributes section below? Description of module benefits. Field type: HTML, Field length: 4000 characters |//
          "attributes": [
 	   {
-	    "description": "1 serving Café Latte Shakeology"  //| Description of ingredients. Field type: HTML, Field length: 255 characters |//
+	    "description": "1 serving Café Latte Shakeology"  //| WCS Field - Two Column Tab Content: First Column / Two Column Tab Content: Second Column / Image and Text Tab: Benefits Tab Body / Recipe Asset: Recipe Ingredients / Recipe Asset: Additional Text. Examples: Two Column Tab Content: Shakeology Strawberry - Benefit - About - en_US, Metadata ID: 1408668509900 / Image and Text Tab: Benefit - Guarantee - Global - Shakeology - 30 Day - en_US, Metadata ID: 1408740472809 / Recipe Asset: SHK Strawberry - Benefit - Recipe Tile - Simply Strwbry - en_US, Metadata ID: 1409021021658. Description of ingredients. Field type: HTML, Field length: 255 characters |//
 	   }
 	   ]
           }
@@ -81,49 +81,49 @@
 	}
       ],
     "successStories": {
-        "title": "What will YOUR success look like?", //| Success Stories overall section title. Distinct from individual Success Story Profile titles. Field type: HTML, Field length: 256 characters |//
-        "description": "", //| Success Stories overall section description. Distinct from individual Success Story Profile descriptions. Field type: HTML, Field length: 4000 characters |//
-        "disclaimer": "", //|  Success Stories overall section disclaimer. Distinct from individual Success Story Profile disclaimer. Field type: HTML, Field length: 4000 characters |//
+        "title": "What will YOUR success look like?", //| WCS Field - Product: Success Stories Title. Example - Product: ShakeologyStrawberry, Metadata ID: 1408457818705. Success Stories overall section title. Distinct from individual Success Story Profile titles. Field type: HTML, Field length: 256 characters |//
+        "description": "", //| WCS Field - Product: Success Stories Content. Example - Product: ShakeologyStrawberry, Metadata ID: 1408457818705. Success Stories overall section description. Distinct from individual Success Story Profile descriptions. Field type: HTML, Field length: 4000 characters |//
+        "disclaimer": "", //|  WCS Field - Product: Success Stories Disclaimer. Example - Product: ShakeologyStrawberry, Metadata ID: 1408457818705. Success Stories overall section disclaimer. Distinct from individual Success Story Profile disclaimer. Field type: HTML, Field length: 4000 characters |//
 	"profiles": [
           {
-          "title": "Amanda Y.",
-          "url": "http://|img1.beachbodyimages.com/...", //| Full URL path to image |//
-	  "story": "\"Shakeology has changed my life! It has provided me with nutrients that I would never get otherwise.\"", //| Success Story user's testimonial / quote |//
-	  "disclaimer": "Amanda is an independent Beachbody Coach.", //| Success Story user's disclaimer |//
+          "title": "Amanda Y.", //| WCS Field - Success Profile: Profile Name. Example - Success Profile: Shakeology - Global - Sandra C. - en_US, Metadata ID: 1408606024709. |//
+          "url": "http://|img1.beachbodyimages.com/...", //| WCS Field - Cloudinary Image Meta Data: Cloudinary Image URL. Example - Cloudinary Image Meta Data: shk-success-story-w-councell-sandra-370x360-us-english-061616, Metadata ID: 1408469637306. Full URL path to image |//
+	  "story": "\"Shakeology has changed my life! It has provided me with nutrients that I would never get otherwise.\"", //| WCS Field - Success Profile: Profile Story. Example - Success Profile: Shakeology - Global - Sandra C. - en_US, Metadata ID: 1408606024709. WCS Field - Success Profile: Disclaimer Title. Example - Success Profile: Shakeology - Global - Sandra C. - en_US, Metadata ID: 1408606024709. Success Story user's testimonial / quote |//
+	  "disclaimer": "Amanda is an independent Beachbody Coach.", //| WCS Field - Success Profile: Disclaimer Title. Example - Success Profile: Shakeology - Global - Sandra C. - en_US, Metadata ID: 1408606024709. Success Story user's disclaimer |//
 	  "attributes": [
 	    {
-	    "LOST 81 LBS. in 6 months" //| Description of archievements. Field type: HTML, Field length: 255 characters |//
+	    "LOST 81 LBS. in 6 months" //| WCS Field - Success Profile: Profile Success. Example - Success Profile: Shakeology - Global - Sandra C. - en_US, Metadata ID: 1408606024709. Description of archievements. Field type: HTML, Field length: 255 characters |//
 	    }
 	  ]
 	}
        ] 
       },
-      "testimonialTitle" : "", //| Name of user who submitted the Product Testimonial or Quote. Field type: HTML, Field length: 255 characters |//
-      "testimonialDescription" : "", //| Product Testimonial or Quote. Field type: HTML, Field length: 4000 characters |//
-      "testimonialLocation : "", //| Location of user who submitted the Product Testimonial or Quote. Field type: HTML, Field length: 255 characters |//
-      "onSiteSearchKeywords": [ //| Keywords associated with this Product. Managed in Endeca |//
+      "testimonialTitle" : "", //| WCS Field - Featured Testimonial Module: Author. Example - Featured Testimonial Module: Shakeology - Global - Testimonial - Jodi C. - en_US, Metadata ID: 1408638914456. Name of user who submitted the Product Testimonial or Quote. Field type: HTML, Field length: 255 characters |//
+      "testimonialDescription" : "", //| WCS Field - Featured Testimonial Module: Description. Example - Featured Testimonial Module: Shakeology - Global - Testimonial - Jodi C. - en_US, Metadata ID: 1408638914456. Product Testimonial or Quote. Field type: HTML, Field length: 4000 characters |//
+      "testimonialLocation : "", //| WCS Field - Featured Testimonial Module: Location. Example - Featured Testimonial Module: Shakeology - Global - Testimonial - Jodi C. - en_US, Metadata ID: 1408638914456. Location of user who submitted the Product Testimonial or Quote. Field type: HTML, Field length: 255 characters |//
+      "onSiteSearchKeywords": [ //| ToDo: Map the Endeca source. Keywords associated with this Product. Managed in Endeca |//
         "fitness",
         "nutrition",
         "sandwiches"
       ],  
-      "metaTitle": "", //| SEO Meta Tag for Title. Field type: HTML, Field length: 255 characters |//
-      "metaKeywords": "", //| SEO Meta Tag for Keywords. Field type: HTML, Field length: 255 characters |//
-      "metaDescription": "", //| SEO Meta Tag for Description. Field type: HTML, Field length: 255 characters |//
-      "metaRobots": "", //| SEO Meta Tag for Robots. Field type: HTML, Field length: 255 characters |//
-      "promotionalMessage" : "", //| Temporary promotional copy. Field type: HTML, Field length: 250 characters |//
+      "metaTitle": "", //| WCS Field - Meta Data: Meta Title. Example - Meta Data: Shakeology Strawberry - Meta Data _en_US, Metadata ID: 1408638915453. SEO Meta Tag for Title. Field type: HTML, Field length: 255 characters |//
+      "metaKeywords": "", //| WCS Field - Meta Keywords: Meta Title. Example - Meta Data: Shakeology Strawberry - Meta Data _en_US, Metadata ID: 1408638915453. SEO Meta Tag for Keywords. Field type: HTML, Field length: 255 characters |//
+      "metaDescription": "", //| WCS Field - Meta Description: Meta Title. Example - Meta Data: Shakeology Strawberry - Meta Data _en_US, Metadata ID: 1408638915453. SEO Meta Tag for Description. Field type: HTML, Field length: 255 characters |//
+      "metaRobots": "", //| WCS Field - Meta Robots: Meta Title. Example - Meta Data: Shakeology Strawberry - Meta Data _en_US, Metadata ID: 1408638915453. SEO Meta Tag for Robots. Field type: HTML, Field length: 255 characters |//
+      "promotionalMessage" : "", //| WCS Field - Product: Promotion Message. Example - Product: 21DayFixShakeologyChallengePack, Metadata ID: 1408457800589. Temporary promotional copy. Field type: HTML, Field length: 250 characters |//
       "disclaimers": [ //| Product Global disclaimers that are returned for all Digital Properies (e.g. Wave 1, BOD, Apple). Order set by rank order in BCC |//
-        "Shakeology Subscription: Starting in 30 days...", //| Content & Sort order maintained in WSC. Product / SKU mapping maintained in BCC |//
-        "Beachbody On Demand Membership: After your free 30-day trial..."
+        "Shakeology Subscription: Starting in 30 days...", //| WCS Field - Product Disclaimer: Disclaimer Body. Example - Product Disclaimer: Shakeology - Continuity - Disclaimer - en_US, Metadata ID: 1409028021209. BCC Field - Disclaimer Types. Example - Product: SHKStrawberry. Content & Sort order maintained in WSC. Product / SKU mapping maintained in BCC |//
+        "Beachbody On Demand Membership: After your free 30-day trial..." //| Same as above disclaimer, returned in Sort Order |//
       ],
       "digitalPropertyDisclaimers": [ //| Product Digital Property specific disclaimers that are only returned for digitalProperty in the API Request (e.g. Apple). Order set by rank order for that Digital Property in BCC |//
-        "Apple Shakeology Subscription: Starting in 30 days...", //| Content & Sort order maintained in WSC. Product / SKU mapping maintained in BCC |//
-        "Apple Beachbody On Demand Membership: After your free 30-day trial..."
+        "Apple Shakeology Subscription: Starting in 30 days...", //| ToDo: Develop this in the BCC. Content & Sort order maintained in WSC. Product / SKU mapping maintained in BCC |//
+        "Apple Beachbody On Demand Membership: After your free 30-day trial..."  //| Same as above digitalPropertyDisclaimers, returned in Sort Order |//
       ],
         "childSKUs": [
         { 
-	"id": "MDSHK0202N1E102"
-	"type": "main, configurableOption, addOn", //| main = Configurable Option main (header) SKU, configurableOption = mandatory selection, addOn = added to Cart without user's selection |//
-	"parentId": "MDBCPBOD", //| Used to associate Configurable SKU childSKUs with parent SKU |//
+	"id": "MDSHK0202N1E102", //| WCS Field - Product SKU: SKU. Example - Product SKU: MDSHK0206N1S101, Metadata ID: 1408457818709. |//
+	"type": "main, configurableOption, addOn", //| ToDo: Add Configurable SKU mappings from BCC. main = Configurable Option main (header) SKU, configurableOption = mandatory selection, addOn = added to Cart without user's selection |//
+	"parentId": "MDBCPBOD", //| ToDo: Add Configurable SKU mappings from BCC. Used to associate Configurable SKU childSKUs with parent SKU |//
 	}
       ]
     }
