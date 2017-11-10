@@ -3,6 +3,7 @@
   "msgId": "string", //| Unique message id for logging and debugging |//
   "message": "string", //| Optional debug message, in case request is not completely fulfilled,  |//
   "version": "1.0", //| Schema Version |//
+  "locale": "string", //|Return the locale that was passed, if none return the one used by default (en_US)|//
   
 "products": [
   {
