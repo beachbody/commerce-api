@@ -1,4 +1,4 @@
-// /api/catalog/skus( skuId[], digitalProperty: optional (defaults to global, all attributes), locale: optional (defaults to en_us), stripHtml = false ), userType: optional (REGISTEREDUSER, COACH, etc.) 
+// /api/catalog/skus( skuId[], digitalProperty: optional (defaults to global, all attributes), locale: optional (defaults to en_us), stripHtml = false ), userType: optional (REGISTEREDUSER, COACH, etc.), allParentProducts: optional, defaults to false 
 {
   "msgId": "string", //| Unique message id for logging and debugging |//
   "locale": "string", //|Return the locale that was passed, if none return the one used by default (en_US)|//
@@ -32,7 +32,7 @@
 	  "optionalPurchase": true, //| Programatically determined in ATG. Applies to Beachbody on Demand membership free trial offer in Challenge Packs, which is not shown for current BOD members and is optional for all non-BOD Customers |//
           "size":"large", //| BCC Field - Apparel SKU: Size. Example - MDAP21E105971L |//
 	  "color":"blue", //| BCC Field - Apparel SKU: Color. Example - MDAP21E105971L |//
-	  "parentProducts": [ //| Products that this sku belong to |//
+	  "parentProducts": [ //| Products that this sku belong to. By default, only the primary parentProduct is returned. If the optional parameter allParentProducts: true, then all Products are included across every Product and Configurable SKU that includes that SKU |//
 +            {
 +              "id": "productId", //| BCC Field - Product ID. Example: Product ID 21DBase |// 
 	       "type": "product, configurableSKU", //| BCC Field - Product / SKU. Example: Product ID 21DBase / SKU ID MDBCP21D. Used to denote whether the parent of the child SKU is a Product, or a Configurable SKU |//
