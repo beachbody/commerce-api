@@ -1,4 +1,4 @@
-// /api/catalog/products( productIds [], digitalProperty: optional (defaults to global, all attributes), locale: optional (defaults to en_us), skuDetails: optional (defaults to false, only SKU IDs, skuDefaultOnly: optional (used to return price at the Product level, defaults to false, returns all SKU IDs) ), userType: optional (REGISTEREDUSER, COACH, etc.), parentProducts: optional, defaults to false)
+// /api/catalog/products( productIds [], digitalProperty: optional (defaults to global, all attributes), locale: optional (defaults to en_us), skuDetails: optional (defaults to false, only SKU IDs, skuDefaultOnly: optional (used to return price at the Product level, defaults to false, returns all SKU IDs) ), userType: optional (REGISTEREDUSER, COACH, etc.))
 {
   "msgId": "string", //| Unique message id for logging and debugging |//
   "message": "string", //| Optional debug message, in case request is not completely fulfilled,  |//
