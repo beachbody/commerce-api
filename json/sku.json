@@ -34,7 +34,8 @@
 	  "color":"blue", //| BCC Field - Apparel SKU: Color. Example - MDAP21E105971L |//
 	  "parentProducts": [ //| Products that this sku belong to |//
 +            {
-+              "id": "productId",
++              "id": "productId", //| BCC Field - Product ID. Example: Product ID 21DBase |// 
+	       "type": "product, configurableSKU", //| BCC Field - Product / SKU. Example: Product ID 21DBase / SKU ID MDBCP21D. Used to denote whether the parent of the child SKU is a Product, or a Configurable SKU |//
 +              "link": "String" //|Optional link to product api |//
 +            }
 +          ],
