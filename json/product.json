@@ -102,13 +102,11 @@
       "testimonialTitle" : "", //| WCS Field - Featured Testimonial Module: Author. Example - Featured Testimonial Module: Shakeology - Global - Testimonial - Jodi C. - en_US, Metadata ID: 1408638914456. Name of user who submitted the Product Testimonial or Quote. Field type: HTML, Field length: 255 characters |//
       "testimonialDescription" : "", //| WCS Field - Featured Testimonial Module: Description. Example - Featured Testimonial Module: Shakeology - Global - Testimonial - Jodi C. - en_US, Metadata ID: 1408638914456. Product Testimonial or Quote. Field type: HTML, Field length: 4000 characters |//
       "testimonialLocation : "", //| WCS Field - Featured Testimonial Module: Location. Example - Featured Testimonial Module: Shakeology - Global - Testimonial - Jodi C. - en_US, Metadata ID: 1408638914456. Location of user who submitted the Product Testimonial or Quote. Field type: HTML, Field length: 255 characters |//
-      "onSiteSearchKeywords": [ //| ToDo: Map the Endeca source. Keywords associated with this Product. Managed in Endeca |//
-        "fitness",
-        "nutrition",
-        "sandwiches"
-      ],  
       "metaTitle": "", //| WCS Field - Meta Data: Meta Title. Example - Meta Data: Shakeology Strawberry - Meta Data _en_US, Metadata ID: 1408638915453. SEO Meta Tag for Title. Field type: HTML, Field length: 255 characters |//
-      "metaKeywords": "", //| WCS Field - Meta Keywords: Meta Title. Example - Meta Data: Shakeology Strawberry - Meta Data _en_US, Metadata ID: 1408638915453. SEO Meta Tag for Keywords. Field type: HTML, Field length: 255 characters |//
+      "metaKeywords": [ //| WCS Field - Meta Keywords: Meta Title. Example - Meta Data: Shakeology Strawberry - Meta Data _en_US, Metadata ID: 1408638915453. SEO Meta Tag for Keywords. Field type: HTML, Field length: 255 characters |//
+        "21 Day Fix Base Kit",
+	"Autumn"
+      ],   
       "metaDescription": "", //| WCS Field - Meta Description: Meta Title. Example - Meta Data: Shakeology Strawberry - Meta Data _en_US, Metadata ID: 1408638915453. SEO Meta Tag for Description. Field type: HTML, Field length: 255 characters |//
       "metaRobots": "", //| WCS Field - Meta Robots: Meta Title. Example - Meta Data: Shakeology Strawberry - Meta Data _en_US, Metadata ID: 1408638915453. SEO Meta Tag for Robots. Field type: HTML, Field length: 255 characters |//
       "promotionalMessage" : "", //| WCS Field - Product: Promotion Message. Example - Product: 21DayFixShakeologyChallengePack, Metadata ID: 1408457800589. Temporary promotional copy. Field type: HTML, Field length: 250 characters |//
