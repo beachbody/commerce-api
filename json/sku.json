@@ -1,50 +1,62 @@
-// /api/catalog/skus( skuId[], digitalProperty: optional (defaults to global, all attributes), locale: optional (defaults to en_us), stripHtml = false ), userType: optional (REGISTEREDUSER, COACH, etc.) 
+// /api/catalog/skus( skuId[], digitalProperty: optional (defaults to global, all attributes), locale: optional (defaults to en_us), stripHtml = false ), userType: optional (REGISTEREDUSER, COACH, etc.), allParentProducts: optional, defaults to false 
 {
   "msgId": "string", //| Unique message id for logging and debugging |//
+  "locale": "string", //|Return the locale that was passed, if none return the one used by default (en_US)|//
   "message": "optional debug message, in case request is not completely fulfilled",
   "version": "1.0", //| Schema Version |//
   "skus": [  
         { 
-          "id": "MDSUCLNSO3101HD",  //| WCS Field - Product SKU: SKU. Example - Product SKU: MDSHK0206N1E101, Metadata ID: 1408457818974. |//
-          "title": "", //| WCS Field - Product SKU: SKU Title. Example - Product SKU: MDSHK0206N1E101, Metadata ID: 1408457818974. |//
-          "subTitle1": "", //| WCS Field - Product SKU: SKU SubTitle 1. Example - Product SKU: MDSHK0206N1E101, Metadata ID: 1408457818974. |//
-          "subTitle2": "", //| WCS Field - Product SKU: SKU SubTitle 2. Example - Product SKU: MDSHK0206N1E101, Metadata ID: 1408457818974. |//
-          "titleCart": "", //| WCS Field - Product SKU: SKU Title In Cart. Example - Product SKU: MDSHK0206N1E101, Metadata ID: 1408457818974. |//
-          "active": false, //| WCS Field - Product SKU: SKU Title In Cart. Example - Product SKU: MDSHK0206N1E101, Metadata ID: 1408457818974. |//
-	  "eligibleForResale": true,
-          "stock": -1,
-          "personalVolume": -1,
-          "canView": true,
-          "canPurchase": true, //| Based on userType (e.g. Coach-only Products for Coaches, Challenge Packs for non-Coaches) |//
-          "taxCategory": "123456", //| Set in PIM. Used in the call to Sabrix for the tax calculation in combination with the ship to address |//
-          "maxCartQty": 5,
-          "displayName": "Ult Reset Soothe HD",
-          "dateAvailable": "2011-08-12T20:17:46.384Z", //| Zulu (ISO 8061) |//
-          "endDate": "2011-08-12T20:17:46.384Z", //| Zulu (ISO 8061) |//
-          "isHomeDirect": false, //| Curated boolean meta data. Tagged in the PIM. Synonym for Subscription / Continuity / AutoShip |//
+          "id": "MDSUCLNSO3101HD",  //| WCS Field - Product SKU: SKU. Example - SKU: MDSHK0206N1E101, Metadata ID: 1408457818974. |//
+          "title": "", //| WCS Field - Product SKU: SKU Title. Example - SKU: MDSHK0206N1E101, Metadata ID: 1408457818974. |//
+          "subTitle1": "", //| WCS Field - Product SKU: SKU SubTitle 1. Example - SKU: MDSHK0206N1E101, Metadata ID: 1408457818974. |//
+          "subTitle2": "", //| WCS Field - Product SKU: SKU SubTitle 2. Example - SKU: MDSHK0206N1E101, Metadata ID: 1408457818974. |//
+          "titleCart": "", //| WCS Field - Product SKU: SKU Title In Cart. Example - SKU: MDSHK0206N1E101, Metadata ID: 1408457818974. |//
+          "active": false, //| WCS Field - Product SKU: SKU Title In Cart. Example - SKU: MDSHK0206N1E101, Metadata ID: 1408457818974. |//
+	  "isOutOfStock": false, //| BCC Field - SKU: Is Out of Stock. Example - SKU: MD21DDVD2109. Derived boolean value. Calculated based on inventory feed from EBS to ATG, and current SKUs sold count since the last inventory synchronization |//
+          "eligibleForOutOfStock": false, //| BCC Field - SKU: OutOfStockProduct. Example - SKU: MD21DDVD2109. Curated boolean option to include in inventory feed from EBS to ATG to determine whether Product/SKUs are Out of Stock |//
+          "visibleInStore": true, //| BCC Field - SKU: Visible In Store. Example - SKU: MD21DDVD2109. Curated boolean option to show/hide Products in the eCommerce user facing websites as an override. Controlled in the BCC |//
+          "eligibleForResale": true, //| ToDo: Is this available in the BCC or just in DynAdmin |//
+          "stock": -1, //| ToDo: Is this available in the BCC or just in DynAdmin |//
+          "canView": true, //| ToDo: Is this available in the BCC or just in DynAdmin |//
+          "canPurchase": true, //| BCC Field - SKU: Customer Types. Example - SKU: MD21DDVD2109. Derived value based on userType (e.g. Coach-only Products for Coaches, Challenge Packs for non-Coaches) |//
+          "taxCategory": "123456", //| BCC Field - SKU: Tax Category. Example - SKU: MD21DDVD2109. Set in PIM. Used in the call to Sabrix for the tax calculation in combination with the ship to address |//
+          "maxCartQty": 5,  //| ToDo: Is this available in the BCC or just in DynAdmin |//
+          "displayName": "Ult Reset Soothe HD", //| BCC Field - SKU: Display Name. Example - SKU: MD21DDVD2109. Controlled in the BCC |//
+          "dateAvailable": "2011-08-12T20:17:46.384Z", //| BCC Field - SKU: Date available. Example - SKU: MD21DDVD2109. Zulu (ISO 8061) |//
+          "endDate": "2011-08-12T20:17:46.384Z", //| ToDo: Is this exposed in the BCC or just in Dynadmin? Maintained in the PIM to end_date Product for both eCommerce initial sales as well as Customer Service support of existing sales. Zulu (ISO 8061) |//
+          "isHomeDirect": false, //| BCC Field - SKU: Is Home Direct. Example - MD21DDVD2109. Curated boolean meta data. Tagged in the PIM. Synonym for Subscription / Continuity / AutoShip |//
 	  "flavorType" : "Alternating, Single Flavor (30 serving bag or 24 packets), Combo Flavor Box (24 packets)", //| BCC Field - Product Options: Flavor Type. Used for Challenge Pack & Shakeology Flavors |//
 	  "flavor" : "Chocolate, Vanilla",  //| BCC Field - Product Options: Flavor. Used for Challenge Pack, Performance Pack, Shakeology, Daily Sunshine Flavors |//
 	  "packagingSize" : "30 Servings in resealable bag", //| BCC Field - Product Options: Serving |//
 	  "orderFrequency" : "One Time, Monthly, Quarterly", //| BCC Field - Product Options: Recurring Order Frequency |//
 	  "optionalPurchase": true, //| Programatically determined in ATG. Applies to Beachbody on Demand membership free trial offer in Challenge Packs, which is not shown for current BOD members and is optional for all non-BOD Customers |//
-          "disclaimers": [ //| Product Global disclaimers that are returned for all Digital Properies (e.g. Wave 1, BOD, Apple). Order set by rank order in BCC |//
-	     "Shakeology Subscription: Starting in 30 days...", //| WCS Field - Product Disclaimer: Disclaimer Body. Example - Product Disclaimer: Shakeology - Continuity - Disclaimer - en_US, Metadata ID: 1409028021209. BCC Field - Disclaimer Types. Example - Product: SHKStrawberry. Content & Sort order maintained in WSC. Product / SKU mapping maintained in BCC |//
-	     "Beachbody On Demand Membership: After your free 30-day trial..." //| Same as above disclaimer, returned in Sort Order |//
+          "size":"large", //| BCC Field - Apparel SKU: Size. Example - MDAP21E105971L |//
+	  "color":"blue", //| BCC Field - Apparel SKU: Color. Example - MDAP21E105971L |//
+	  "parentProducts": [ //| Products that this sku belong to. By default, only the primary parentProduct is returned. If the optional parameter allParentProducts: true, then all Products are included across every Product and Configurable SKU that includes that SKU |//
++            {
++              "id": "productId", //| BCC Field - Product ID. Example: Product ID 21DBase |// 
+	       "type": "product, configurableOption", //| BCC Field - Product / SKU. Example: Product ID 21DBase / 21DChallengePack. Used to denote whether the parent of the child SKU is a standalone Product, or a Product with Configurable SKUs |//
++              "link": "String" //|Optional link to product api |//
++            }
++          ],
+	  "disclaimers": [ //| Sku Global disclaimers that are returned for all Digital Properies (e.g. Wave 1, BOD, Apple). Order set by rank order in BCC |//
+	  "Shakeology Subscription: Starting in 30 days...", //| WCS Field - Product Disclaimer: Disclaimer Body. Example - Product Disclaimer: Shakeology - Continuity - Disclaimer - en_US, Metadata ID: 1409028021209. BCC Field - Disclaimer Types. Example - Product: SHKStrawberry. Content & Sort order maintained in WSC. Product / SKU mapping maintained in BCC |//
+	  "Beachbody On Demand Membership: After your free 30-day trial..." //| Same as above disclaimer, returned in Sort Order |//
 	  ],
-	  "digitalPropertyDisclaimers": [ //| Product Digital Property specific disclaimers that are only returned for digitalProperty in the API Request (e.g. Apple). Order set by rank order for that Digital Property in BCC |//
+	  "digitalPropertyDisclaimers": [ //| Sku Digital Property specific disclaimers that are only returned for digitalProperty in the API Request (e.g. Apple). Order set by rank order for that Digital Property in BCC |//
 	     "Apple Shakeology Subscription: Starting in 30 days...", //| ToDo: Develop this in the BCC. Content & Sort order maintained in WSC. Product / SKU mapping maintained in BCC |//
 	     "Apple Beachbody On Demand Membership: After your free 30-day trial..."  //| Same as above digitalPropertyDisclaimers, returned in Sort Order |//
 	  ],
           "prices": {
             "currency": "USD", //| Based on Country - "USD/CAD/GBP" |//
-            "retailPrice": 155.95, //| Price of item from BCC Pricelist for RegisteredUser (Free Customer) userType |//
-            "userSegmentPrice": 93.57, //| Price of item from BCC Pricelist for userType. Synonymous with 'Tier' price on ATG |//
+            "retailPrice": 155.95, //| BCC File - Pricelist: US-REGISTEREDUSER-USD. Example - MDAP21E105971L. Price of item from BCC Pricelist for RegisteredUser (Free Customer) userType |//
+            "userSegmentPrice": 93.57, //| BCC File - Pricelist: US-REGISTEREDUSER-USD / US-COACH-USD based on userType. Example - MDAP21E105971L. Price of item from BCC Pricelist for userType. Synonymous with 'Tier' price on ATG |//
             "promotionPrice": 124.76, //| Price of item from BCC Sales Pricelist |//
-            "specialOfferPrice": 50.00 //| Programmatically calculated based on cart content using the Special Offer business logic in the BCC. Dependency on the Cart API endpoint's availability |//
+            "specialOfferPrice": 50.00 //| BCC Field - Merchandising: Promotions. Example: 3-Day Refresh Special Offer - US. Programmatically calculated based on cart content using the Special Offer business logic in the BCC. Dependency on the Cart API endpoint's availability |//
             },
 	  "coachBonusAttributes": {
-            "personalVolume": 5.0, //| Based on SKU |//
-            "commissionVolume": 5.0
+            "personalVolume": 5.0, //| Merchandising: Search: CCompensation Item. Example: MDAPTBB107251S:ROOT-COMPENSATION-LIST. Based on SKU |//
+            "commissionVolume": 5.0 //| Merchandising: Search: CCompensation Item. Example: MDAPTBB107251S:ROOT-COMPENSATION-LIST. Based on SKU |//
           }
         }
       ]

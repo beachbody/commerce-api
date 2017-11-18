@@ -1,8 +1,9 @@
-// /api/catalog/products( productIds [], digitalProperty: optional (defaults to global, all attributes), locale: optional (defaults to en_us), skuDetails: optional (defaults to false, only SKU IDs, skuDefaultOnly: optional (used to return price at the Product level, defaults to false, returns all SKU IDs) ), userType: optional (REGISTEREDUSER, COACH, etc.) )
+// /api/catalog/products( productIds [], digitalProperty: optional (defaults to global, all attributes), locale: optional (defaults to en_us), skuDetails: optional (defaults to false, only SKU IDs, skuDefaultOnly: optional (used to return price at the Product level, defaults to false, returns all SKU IDs) ), userType: optional (REGISTEREDUSER, COACH, etc.))
 {
   "msgId": "string", //| Unique message id for logging and debugging |//
   "message": "string", //| Optional debug message, in case request is not completely fulfilled,  |//
   "version": "1.0", //| Schema Version |//
+  "locale": "string", //|Return the locale that was passed, if none return the one used by default (en_US)|//
   
 "products": [
   {
@@ -54,6 +55,7 @@
       "performanceNutrition": "", //| BCC Field - Nutrition Product: Performance Nutrition Default. Example - BBPAdvStackChoc |//
       "program": "", //| BCC Field - Product Options: Program: Featured Products association. Example - Fitness Program ID: 21DayFix. Grouping of Products by Brand/Trainer (e.g. Curated meta data. Tagged in the PIM |//
       "flavor": "", //| BCC Field - Nutrition Product: Flavor. Example - BBPAdvStackChoc. Curated meta data. Tagged in the PIM |//
+      "gender": "", //| BCC Field - Apparel And Accessories Product: gender. Example - TBBWLayerHoodie. Curated meta data. Tagged in the PIM |//
       "active": false, //| WCS Field - Product: Active, Product SKU: BB_sku_status. Examples: Product: 21DayFixBaseKit, Metadata ID: 1408699428538 / Product SKU: MD21DDVD2109, Metadata ID: 1408699428551. Applies to both the Product & SKU. Derived value |//
       "daysAvailable": 206, //| BCC Field - Product: Days available. Example - BBPAdvStackChoc |//
       "benefits": [    //| WCS Benefit tabs with Copy and/or Images. Standardized format for any of the following WCS module asset definitions: TAB_ImageText, TAB_OneColumn, TAB_TwoColumn, TAB_Nutrition, TAB_Recipe, TAB_TileContainer, TAB_Shakeology_TileContainer |//
@@ -101,13 +103,11 @@
       "testimonialTitle" : "", //| WCS Field - Featured Testimonial Module: Author. Example - Featured Testimonial Module: Shakeology - Global - Testimonial - Jodi C. - en_US, Metadata ID: 1408638914456. Name of user who submitted the Product Testimonial or Quote. Field type: HTML, Field length: 255 characters |//
       "testimonialDescription" : "", //| WCS Field - Featured Testimonial Module: Description. Example - Featured Testimonial Module: Shakeology - Global - Testimonial - Jodi C. - en_US, Metadata ID: 1408638914456. Product Testimonial or Quote. Field type: HTML, Field length: 4000 characters |//
       "testimonialLocation : "", //| WCS Field - Featured Testimonial Module: Location. Example - Featured Testimonial Module: Shakeology - Global - Testimonial - Jodi C. - en_US, Metadata ID: 1408638914456. Location of user who submitted the Product Testimonial or Quote. Field type: HTML, Field length: 255 characters |//
-      "onSiteSearchKeywords": [ //| ToDo: Map the Endeca source. Keywords associated with this Product. Managed in Endeca |//
-        "fitness",
-        "nutrition",
-        "sandwiches"
-      ],  
       "metaTitle": "", //| WCS Field - Meta Data: Meta Title. Example - Meta Data: Shakeology Strawberry - Meta Data _en_US, Metadata ID: 1408638915453. SEO Meta Tag for Title. Field type: HTML, Field length: 255 characters |//
-      "metaKeywords": "", //| WCS Field - Meta Keywords: Meta Title. Example - Meta Data: Shakeology Strawberry - Meta Data _en_US, Metadata ID: 1408638915453. SEO Meta Tag for Keywords. Field type: HTML, Field length: 255 characters |//
+      "metaKeywords": [ //| WCS Field - Meta Keywords: Meta Title. Example - Meta Data: Shakeology Strawberry - Meta Data _en_US, Metadata ID: 1408638915453. SEO Meta Tag for Keywords. Field type: HTML, Field length: 255 characters |//
+        "21 Day Fix Base Kit",
+	"Autumn"
+      ],   
       "metaDescription": "", //| WCS Field - Meta Description: Meta Title. Example - Meta Data: Shakeology Strawberry - Meta Data _en_US, Metadata ID: 1408638915453. SEO Meta Tag for Description. Field type: HTML, Field length: 255 characters |//
       "metaRobots": "", //| WCS Field - Meta Robots: Meta Title. Example - Meta Data: Shakeology Strawberry - Meta Data _en_US, Metadata ID: 1408638915453. SEO Meta Tag for Robots. Field type: HTML, Field length: 255 characters |//
       "promotionalMessage" : "", //| WCS Field - Product: Promotion Message. Example - Product: 21DayFixShakeologyChallengePack, Metadata ID: 1408457800589. Temporary promotional copy. Field type: HTML, Field length: 250 characters |//
