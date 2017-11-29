@@ -1,0 +1,180 @@
+// /api/catalog/createCart( cartIds [], digitalProperty: mandatory, locale: optional (defaults to en_us), cartDetails: optional (defaults to true, returns all cart details), userType: optional (REGISTEREDUSER, COACH, etc.))
+{
+  "msgId": "string", //| Unique message id for logging and debugging |//
+  "message": "string", //| Optional debug message, in case request is not completely fulfilled,  |//
+  "version": "1.0", //| Schema Version |//
+  "locale": "string", //|Return the locale that was passed, if none return the one used by default (en_US)|//
+  
+"createCart": {
+    "id": "cartId", //| ATG Cart ID. Returns full Response for each valid Cart ID, and error message for each invalid Cart ID along with the invalid Product ID. Invalid Cart IDs do not fail the entire Response for valid Product IDs |//
+	"removedItems": [],
+	"containsPack": true,
+	"commerceItems": [
+		{
+		"productDetailsUrl": "/shop/ca/d/annual-all-access-beachbody-on-demand-shakeology-challenge-pack-BODChallengePack?skuId=MDCABCPBOD",
+		"productDisplayName": "Annual All-Access Beachbody On Demand & Shakeology Challenge Pack",
+		"productDescription": "<p>\r\n\tGet unlimited access to every program on Beachbody On Demand, including all new releases. Plus, get a 30-day supply of Shakeology and the Portion Fix nutrition system.<\/p>\r\n",
+		"quantityWithFraction": 0,
+		"removable": true,
+		"cartTitle": "Annual All-Access Beachbody On Demand & Shakeology Challenge Pack",
+		"alternativePrice": null,
+		"thumbImageURL": "https://img1.beachbodyimages.com/teambeachbody/image/upload/Teambeachbody/shared_assets/Shop/Challenge Packs/BOD-Annual-All-Access-Challenge-Pack/CDP/bod-all-access-cp-cdp-640-400-en-us-072417.png",
+		"maxCartQty": 1,
+		"specialOffer": false,
+		"id": "ci1830001902",
+		"finalPriceAfterPromotions": null,
+		"purchaseSource": "PAGE_PDP",
+		"quantity": 1,
+		"modal": false,
+		"stamp": null,
+		"personalVolume": -1,
+		"subSku": "Vanilla Shakeology",
+		"discountPrice": "",
+		"available": {
+			"status": true,
+			"message": null
+			},
+		"subSkuFlavor": "Vanilla Whey",
+		"productId": "BODChallengePack",
+		"removeCPInfo": {},
+		"baseListPrice": "$186.00",
+		"productDetailsBackUrl": "/shop/ca/b/challenge-packs?expandId=BeachbodyOnDemand",
+		"taxCodes": "",
+		"priceInfo": {
+		"currencyCode": "CAD",
+		"amount": "$186.00"
+			},
+		"productTitle": "Annual All-Access Beachbody On Demand & Shakeology Challenge Pack",
+		"subSkuServingSize": "30",
+		"pre_order": {
+		"status": false,
+		"message": null
+			},
+		"attributes": "Includes Shakeology & Beachbody on Demand<br><br>30 Vanilla servings in a resealable bag<br>Monthly subscription with discount shipping<br><br>Beachbody On Demand Annual Membership<br>",
+		"catalogRefId": "MDCABCPBOD",
+		"totalPersonalVolume": -1
+		}, 
+		{
+		"productDetailsUrl": "/shop/ca/d/shakeology-chocolate-SHKChocolate?skuId=MDSHK0202N2F101",
+		"productDisplayName": "Chocolate Shakeology",
+		"productDescription": "<p>\n\tSensuously sweet and utterly delicious, Chocolate Shakeology is the ultra-premium superfood health supplement shake that puts a world of healthy ingredients into every glass.<\/p>",
+		"quantityWithFraction": 0,
+		"removable": true,
+		"cartTitle": "Chocolate Shakeology",
+		"alternativePrice": null,
+		"thumbImageURL": "https://img1.beachbodyimages.com/teambeachbody/image/upload/Teambeachbody/shared_assets/Shop/Shakeology/Shakeology Chocolate/Bag/CDP/Product/shakeology-choc-glass-cdp-640x400-us-english-052516.png",
+		"maxCartQty": 5,
+		"specialOffer": false,
+		"id": "ci1830001900",
+		"finalPriceAfterPromotions": null,
+		"purchaseSource": "PAGE_PDP",
+		"quantity": 1,
+		"modal": false,
+		"stamp": null,
+		"personalVolume": -1,
+		"subSku": null,
+		"discountPrice": "",
+		"available": 
+			{
+			"status": true,
+			"message": null
+			},
+		"subSkuFlavor": null,
+		"productId": "SHKChocolate",
+		"removeCPInfo": {},
+		"baseListPrice": "$155.95",
+		"productDetailsBackUrl": "/shop/ca/b/challenge-packs",
+		"taxCodes": "",
+		"priceInfo": 
+			{
+			"currencyCode": "CAD",
+			"amount": "$155.95"
+			},
+		"productTitle": "Chocolate Shakeology",
+		"subSkuServingSize": null,
+		"pre_order": 
+			{
+			"status": false,
+			"message": null
+			},
+		"attributes": "24 single-serve Chocolate packets in a box<br>Monthly subscription with discount shipping",
+		"catalogRefId": "MDSHK0202N2F101",
+		"totalPersonalVolume": -1
+			}
+		],
+		"id": "STORE_25290939",
+		"priceInfo": {
+            "total": "$341.95",
+            "currencyCode": "CAD",
+            "promotions": "$0.00",
+            "amount": "$341.95",
+            "shipping": -1,
+            "tax": -1,
+            "discounts": "$0.00",
+            "rawSubtotal": "$341.95"
+        },
+        "taxPriceInfo": {
+            "state": {
+                "label": "Estimated PST/QST/RST",
+                "amount": "$0.00"
+            },
+            "country": {
+                "label": "Estimated GST/HST",
+                "amount": "$0.00"
+            },
+            "city": {
+                "label": "city",
+                "amount": "$0.00"
+            },
+            "amount": {
+                "label": "Estimated Tax",
+                "amount": "$0.00"
+            },
+            "county": {
+                "label": "county",
+                "amount": "$0.00"
+            },
+            "district": {
+                "label": "district",
+                "amount": "$0.00"
+            }
+        },
+        "includeFreeCoachBSK": null,
+        "unlockedSpecialOffer": false,
+        "shippings": [
+			{
+				"shippingMethod": null,
+				"id": "sg25382380",
+				"taxCodes": "",
+				"priceInfo": {
+					"currencyCode": "CAD",
+					"amount": 0,
+					"rawShipping": 0
+				},
+				"shippingAddress": {
+					"lastName": null,
+					"state": null,
+					"address1": null,
+					"address2": null,
+					"city": null,
+					"country": null,
+					"postalCode": null,
+					"phoneNumber": null,
+					"email": null,
+					"firstName": null
+				}
+			}
+		],
+        "promoText": null,
+        "totalCommerceItemCountWithFraction": 2,
+        "includeFreeMembershipFakeSku": null,
+        "profile": {
+            "lastName": null,
+            "customerType": "REGISTEREDUSER",
+            "userType": "Free",
+            "id": "31658234",
+            "gender": "female",
+            "firstName": null
+        },
+        "totalCommerceItemCount": 2
+    }
