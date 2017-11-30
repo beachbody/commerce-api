@@ -7,7 +7,8 @@
   "carts": [
 	{
 	"id": "STORE_12345", //| ATG Cart ID. ATG Carts have unique identifiers regardless of the client. ATG Carts contain Items. Returns full Response for each valid Cart ID, and error message for each invalid Cart ID along with the invalid Product ID. Invalid Cart IDs do not fail the entire Response for valid Cart IDs |//
-    	"containsConfigurableSKU": true,
+    	"totalCommerceItemCount": 1,
+	"containsConfigurableSKU": true,
 	"shippingAddress": {
 				"lastName": "Sandwich",
 				"state": "CA",
@@ -35,12 +36,20 @@
 	"items": [
 		{
 		"id": "12345", //| ATG Item ID. ATG Items contain one or more SKUs. Returns full Response for each valid Item ID, and error message for each invalid Item ID along with the invalid Item ID. Invalid Item IDs do not fail the entire Response for valid Item IDs |//
+		"removable": true, //| ATG business rule indicating whether item can be removed from the Cart based on User Type. For example, registering Coaches cannot remove the Business Starter Kit |//
+		"quantity": 1,
+		"quantityMaximum": 5,
+		"specialOffer": false,
+		"purchaseSource": "PAGE_PDP",
+		"setBusinessStarterKitPriceFree": null,
+		"showSpecialOffer": false,
+		"includeFreeBeachbodyOnDemand": null,
 		"products": [
 			{
 			"id": "12345", //| ATG Product ID. ATG Items contain one or more SKUs, and the SKUs store assets at both the SKU and Product level |//
 			 "media": [
 			  { //| Question - Examples: main, etc. Does WCS/ATG have groupings other than main? Answer: WCS/ATG differentiates between Category Detail Page images and Product Detail Page imagesv
-			    "type": "main, thumbnail", //| WCS Field - Image: Main Image / Thumbnail Image. Example - Image: 21 Day Fix Base Kit PDP, Metadata ID: 1408686357132. |//
+			    "type": "main, thumbnail, stamp", //| WCS Field - Image: Main Image / Thumbnail Image / Stamp image. Example - Image: 21 Day Fix Base Kit PDP, Metadata ID: 1408686357132. Stamp images are either generated from automated BCC attributes or added to the PDP image in WCS as a custom image |//
 			    "mediaType": "video, image, pdf, word, etc", //| WCS Field - Cloudinary Image Meta Data: Media Content Definition / Product Video: Media Content Definition. Examples - Cloudinary Image Meta Data: 21df-base-kit-pdp-930x960-us-english-062016, Metadata ID: 1408469599974 / Product Video: YouTube Video Test - Product Video, Metadata ID: 1409108833676. |//
 			    "url": "http://img1.beachbodyimages.com/...", //| WCS Field - Cloudinary Image Meta Data: Cloudinary Image URL / Link: Link Href. Examples - Image: Cloudinary Image Meta Data: 21df-base-kit-pdp-930x960-us-english-062016, Metadata ID: 1408469599974 / Link: Shakeology Strawberry - PDF Link - Ingredients - en_US, Metadata ID: 1408796756818. Full URL path images, pdfs, Word documents. Does not apply to videos |//
 			    "parentId": "123456", //| Respository field - TBD. Used to associate thumbnail content (i.e. images, title) with main content (images, videos) |//
@@ -83,7 +92,8 @@
 			 "gender": "", //| BCC Field - Apparel And Accessories Product: gender. Example - TBBWLayerHoodie. Curated meta data. Tagged in the PIM |//
 			 "active": false, //| WCS Field - Product: Active, Product SKU: BB_sku_status. Examples: Product: 21DayFixBaseKit, Metadata ID: 1408699428538 / Product SKU: MD21DDVD2109, Metadata ID: 1408699428551. Applies to both the Product & SKU. Derived value |//
 			 "daysAvailable": 206, //| BCC Field - Product: Days available. Example - BBPAdvStackChoc |//
-			"sku": { 
+			 "promotionalMessage" : "", //| WCS Field - Product: Promotion Message. Example - Product: 21DayFixShakeologyChallengePack, Metadata ID: 1408457800589. Temporary promotional copy. Field type: HTML, Field length: 250 characters |//
+      			 "sku": { 
 				"id": "MDSUCLNSO3101HD",  //| ATG Items contain one or more SKUs. WCS Field - Product SKU: SKU. Example - SKU: MDSHK0206N1E101, Metadata ID: 1408457818974. |//
          			"title": "", //| WCS Field - Product SKU: SKU Title. Example - SKU: MDSHK0206N1E101, Metadata ID: 1408457818974. |//
          			"subTitle1": "", //| WCS Field - Product SKU: SKU SubTitle 1. Example - SKU: MDSHK0206N1E101, Metadata ID: 1408457818974. |//
@@ -110,6 +120,7 @@
          			"optionalPurchase": true, //| Programatically determined in ATG. Applies to Beachbody on Demand membership free trial offer in Challenge Packs, which is not shown for current BOD members and is optional for all non-BOD Customers |//
          			"size":"large", //| BCC Field - Apparel SKU: Size. Example - MDAP21E105971L |//
          			"color":"blue", //| BCC Field - Apparel SKU: Color. Example - MDAP21E105971L |//
+				"servingSize": "30",
 				"disclaimers": [ //| Sku Global disclaimers that are returned for all Digital Properies (e.g. Wave 1, BOD, Apple). Order set by rank order in BCC |//
 				  "Shakeology Subscription: Starting in 30 days...", //| WCS Field - Product Disclaimer: Disclaimer Body. Example - Product Disclaimer: Shakeology - Continuity - Disclaimer - en_US, Metadata ID: 1409028021209. BCC Field - Disclaimer Types. Example - Product: SHKStrawberry. Content & Sort order maintained in WSC. Product / SKU mapping maintained in BCC |//
 				  "Beachbody On Demand Membership: After your free 30-day trial..." //| Same as above disclaimer, returned in Sort Order |//
