@@ -5,7 +5,7 @@
   "version": "1.0", //| Schema Version |//
   "locale": "string", //|Return the locale that was passed, if none return the one used by default (en_US)|//
   "cart": {
-    "id": "STORE_12345", //| ATG Cart ID. ATG Carts have unique identifiers regardless of the client. ATG Carts contain Items. Returns full Response for each valid Cart ID, and error message for each invalid Cart ID along with the invalid Product ID. Invalid Cart IDs do not fail the entire Response for valid Cart IDs |//
+    "id": "STORE_12345", //| Returned in the order that the user added the item to their Cart (i.e. timestamp descending). ATG Cart ID. ATG Carts have unique identifiers regardless of the client. ATG Carts contain Items. Returns full Response for each valid Cart ID, and error message for each invalid Cart ID along with the invalid Product ID. Invalid Cart IDs do not fail the entire Response for valid Cart IDs |//
     "containsPack": true,
 	"totalCommerceItemCount": 1,
 	"containsConfigurableSKU": true,
