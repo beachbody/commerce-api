@@ -1,4 +1,4 @@
-// /api/catalog/cart( cartIds [], digitalProperty: mandatory, locale: optional (defaults to en_us), cartDetails: optional (defaults to true, returns all cart details), userType: optional (REGISTEREDUSER, COACH, etc.), allParentProducts: optional, defaults to true)
+// /api/catalog/cart(cartId: optional, digitalProperty: mandatory, locale: optional (defaults to en_us), cartDetails: optional (defaults to true, returns all cart details), userType: optional (REGISTEREDUSER, COACH, etc.), allParentProducts: optional, defaults to true)
 {
   "msgId": "string", //| Unique message id for logging and debugging |//
   "message": "string", //| Optional debug message, in case request is not completely fulfilled,  |//
@@ -19,7 +19,41 @@
 	"coachBonusAttributes": {
 	"personalVolume": 5.0, //| Merchandising: Search: CCompensation Item. Example: MDAPTBB107251S:ROOT-COMPENSATION-LIST. Based on SKU |//
 	"commissionVolume": 5.0 //| Merchandising: Search: CCompensation Item. Example: MDAPTBB107251S:ROOT-COMPENSATION-LIST. Based on SKU |//
-	}
+	},
+	"tax": { //| Tax from Sabrix service. Taxed at the SKU level. In Canada, divided by geography (i.e. state vs. country) |//
+		"state": {
+		"label": "Estimated PST/QST/RST",
+		"amount": "$0.00"
+		},
+		"country": {
+		"label": "Estimated GST/HST",
+		"amount": "$0.00"
+		},
+		"city": {
+		"label": "city",
+		"amount": "$0.00"
+		},
+		"amount": {
+		"label": "Estimated Tax",
+		"amount": "$0.00"
+		},
+		"county": {
+		"label": "county",
+		"amount": "$0.00"
+		},
+		"district": {
+		"label": "district",
+		"amount": "$0.00"
+		}
+	},
+	"shipping": {
+		"id": "sg25460531",
+		"label": "Smart Delivery (5 to 7 business days)",
+		"taxCategory": "123456", //| BCC Field - SKU: Tax Category. Example - SKU: MD21DDVD2109. Set in PIM. Used in the call to Sabrix for the tax calculation in combination with the ship to address |//
+		"price": {
+			"amount": 2,
+			"raw": 2 //| ToDo: What is this a reference to in BCC ? |//
+		},
 	"shippingAddress": {
 				"lastName": "Sandwich",
 				"state": "CA",
@@ -147,40 +181,6 @@
 				     "Apple Shakeology Subscription: Starting in 30 days...", //| ToDo: Develop this in the BCC. Content & Sort order maintained in WSC. Product / SKU mapping maintained in BCC |//
 				     "Apple Beachbody On Demand Membership: After your free 30-day trial..."  //| Same as above digitalPropertyDisclaimers, returned in Sort Order |//
 				  ],
-				"tax": { //| Tax from Sabrix service. Taxed at the SKU level. In Canada, divided by geography (i.e. state vs. country) |//
-				    "state": {
-					"label": "Estimated PST/QST/RST",
-					"amount": "$0.00"
-				    },
-				    "country": {
-					"label": "Estimated GST/HST",
-					"amount": "$0.00"
-				    },
-				    "city": {
-					"label": "city",
-					"amount": "$0.00"
-				    },
-				    "amount": {
-					"label": "Estimated Tax",
-					"amount": "$0.00"
-				    },
-				    "county": {
-					"label": "county",
-					"amount": "$0.00"
-				    },
-				    "district": {
-					"label": "district",
-					"amount": "$0.00"
-				    }
-				},
-				"shipping": {
-					"id": "sg25460531",
-					"label": "Smart Delivery (5 to 7 business days)",
-					"taxCategory": "123456", //| BCC Field - SKU: Tax Category. Example - SKU: MD21DDVD2109. Set in PIM. Used in the call to Sabrix for the tax calculation in combination with the ship to address |//
-         				"price": {
-						"amount": 2,
-						"raw": 2 //| ToDo: What is this a reference to in BCC ? |//
-				},
 				"prices": {
 				    "currency": "USD", //| Based on Country - "USD/CAD/GBP" |//
 				    "retailPrice": 155.95, //| BCC File - Pricelist: US-REGISTEREDUSER-USD. Example - MDAP21E105971L. Price of item from BCC Pricelist for RegisteredUser (Free Customer) userType |//
