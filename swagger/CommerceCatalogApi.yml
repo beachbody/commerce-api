@@ -28,6 +28,13 @@ paths:
           description: 'Optional locale, if not passed en_US will be used'
           required: false
           type: string
+        - name: userType
+          in: query
+          description: >-
+            Optional userType, if not passed REGISTEREDUSER will be used. Other
+            types COACH
+          required: false
+          type: string
         - name: User-Agent
           in: header
           type: string
@@ -74,6 +81,13 @@ paths:
         - name: locale
           in: query
           description: 'Optional locale, if not passed en_US will be used'
+          required: false
+          type: string
+        - name: userType
+          in: query
+          description: >-
+            Optional userType, if not passed REGISTEREDUSER will be used. Other
+            types COACH
           required: false
           type: string
         - name: digitalProperty
@@ -125,6 +139,8 @@ definitions:
     properties:
       version:
         type: number
+      locale:
+        type: string
       message:
         type: string
       msgId:
@@ -138,6 +154,8 @@ definitions:
     properties:
       version:
         type: number
+      locale:
+        type: string
       message:
         type: string
       msgId:
@@ -151,6 +169,8 @@ definitions:
     properties:
       version:
         type: number
+      locale:
+        type: string
       servicePath:
         type: string
       message:
@@ -164,6 +184,43 @@ definitions:
     properties:
       id:
         type: string
+      title:
+        type: string
+      description:
+        type: string
+      type:
+        type: string
+      isInventoryStockAvailable:
+        type: boolean
+      dailyNutrition:
+        type: boolean
+      isOnSale:
+        type: boolean
+      visibleInStore:
+        type: boolean
+      isBestSeller:
+        type: boolean
+      isLowInventory:
+        type: boolean
+      dateAvailable:
+        type: string
+      endDate:
+        type: string
+      isBOD:
+        type: boolean
+      performanceNutrition:
+        type: string
+      program:
+        type: string
+      flavor:
+        type: string
+      gender:
+        type: string
+        example: 'male, available on apparel and accessories products'
+      active:
+        type: boolean
+      daysAvailable:
+        type: integer
       isNew:
         type: boolean
       childSkus:
@@ -176,6 +233,18 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Media'
+      disclaimers:
+        type: array
+        items:
+          type: string
+      digitalPropertyDisclaimers:
+        type: array
+        items:
+          type: string
+      onSiteSearchKeywords:
+        type: array
+        items:
+          type: string
   ProductCategory:
     type: object
     properties:
@@ -215,6 +284,12 @@ definitions:
         type: string
       subTitle2:
         type: string
+      color:
+        type: string
+        example: 'Black, only available on apparel and equipmentGear'
+      size:
+        type: string
+        example: 'SM, available on apparel and accessories sku'
       isHomeDirect:
         type: boolean
       canView:
@@ -227,6 +302,14 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Product'
+      disclaimers:
+        type: array
+        items:
+          type: string
+      digitalPropertyDisclaimers:
+        type: array
+        items:
+          type: string
       prices:
         $ref: '#/definitions/Price'
       coachBonusAttributes:
