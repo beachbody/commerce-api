@@ -23,27 +23,27 @@
 	"tax": { //| Tax from Sabrix service. Taxed at the SKU level. In Canada, divided by geography (i.e. state vs. country) |//
 		"state": {
 		"label": "Estimated PST/QST/RST",
-		"amount": "$0.00"
+		"amount": "0.00"
 		},
 		"country": {
 		"label": "Estimated GST/HST",
-		"amount": "$0.00"
+		"amount": "0.00"
 		},
 		"city": {
 		"label": "city",
-		"amount": "$0.00"
+		"amount": "0.00"
 		},
 		"amount": {
 		"label": "Estimated Tax",
-		"amount": "$0.00"
+		"amount": "0.00"
 		},
 		"county": {
 		"label": "county",
-		"amount": "$0.00"
+		"amount": "0.00"
 		},
 		"district": {
 		"label": "district",
-		"amount": "$0.00"
+		"amount": "0.00"
 		}
 	},
 	"shipping": {
