@@ -1,0 +1,527 @@
+swagger: '2.0'
+info:
+  description: Commerce Catalog API for exposing Product and Skus
+  version: '1.0'
+  title: Commerce Cart API
+host: 'localhost:11000'
+basePath: /service/rest/v1
+schemes:
+  - http
+paths:
+  /api/cart:
+    get:
+      tags:
+        - cart(s)
+      summary: 'Find the cart for the cartId, guid and digitalProperty.'
+      description: >-
+        Return cart by the cart Id passed. If the cart belongs to a persisted
+        profile but no guid passed throw error. If no cart id passed, try to
+        find cart with guid and digital property combination and validate
+        against the guid of the profile associated with the cart
+      operationId: findCart
+      produces:
+        - application/json
+      parameters:
+        - name: cartId
+          in: query
+          description: cartId parameter
+          required: false
+          type: string
+        - name: guid
+          in: header
+          type: string
+          required: false
+          description: 'User guid, if the cart is associated with a signed in user.'
+        - name: digitalProperty
+          in: header
+          type: string
+          required: true
+          description: Digital property that this cart was created for. For ex. BOD
+        - name: User-Agent
+          in: header
+          type: string
+          required: true
+          description: User Agent parameter
+        - name: MSG_ID
+          in: header
+          type: string
+          description: Optional MSG_ID for logging and debugging
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/CartResponse'
+        '400':
+          description: 'for ex. Invalid api version,'
+        '401':
+          description: No API-KEY or invalid API-KEY Or cart belongs to some other user
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        '404':
+          description: No cart found for given guid and digital property
+        '500':
+          description: Internal Server Error
+  /api/cart/items:
+    post:
+      tags:
+        - cart(s)
+      summary: Add the sku (and it's sub skus passed) to the cart.
+      description: >-
+        Adds item to the cart based on values passed. If a cartId is not passed,
+        a new cart is created and persisted.
+      operationId: addItemToCart
+      produces:
+        - application/json
+      parameters:
+        - name: productId
+          in: query
+          description: Product Id for the item. For example. 21DChallengePack
+          required: true
+          type: string
+        - name: skuId
+          in: query
+          description: 'Sku Id for the item, For exmaple. MDBCP21D'
+          required: true
+          type: string
+        - name: subSkuId
+          in: query
+          description: >-
+            Sub Sku Id, only applies to ChallengePacks, Performance packs etc.
+            For ex. MDSHK0202N1E102
+          required: false
+          type: string
+        - name: subSkuMembershipId
+          in: query
+          description: >-
+            Sub Sku Membership Id, only applies to ChallengePacks, Performance
+            packs etc. with memebership addOn For ex. MDCABODDVD50
+          required: false
+          type: string
+        - name: quantity
+          in: query
+          description: 'Item quantity to be added, For ex. 2'
+          required: true
+          type: string
+        - name: User-Agent
+          in: header
+          type: string
+          required: true
+          description: User Agent parameter
+        - name: MSG_ID
+          in: header
+          type: string
+          description: Optional MSG_ID for logging and debugging
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/CartResponse'
+        '400':
+          description: 'Invalid productId(s), api version,'
+        '401':
+          description: No API-KEY or invalid API-KEY
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        '404':
+          description: No cart found
+        '500':
+          description: Internal Server Error
+  '/api/cart/{cartId}/item/{itemId}':
+    delete:
+      tags:
+        - cart(s)
+      summary: deletes the item from the cart
+      description: Deletes item to the cart based on cartid and item Id passed
+      operationId: deleteItemFromCart
+      produces:
+        - application/json
+      parameters:
+        - name: cartId
+          in: path
+          description: Cart Id
+          required: true
+          type: string
+        - name: itemId
+          in: path
+          description: Cart Item Id
+          required: true
+          type: string
+        - name: digitalProperty
+          in: header
+          description: Digital property for which the cart was created
+          required: true
+          type: string
+        - name: guid
+          in: header
+          description: User guid for authenticated user
+          required: false
+          type: string
+        - name: User-Agent
+          in: header
+          type: string
+          required: true
+          description: User Agent parameter
+        - name: MSG_ID
+          in: header
+          type: string
+          description: Optional MSG_ID for logging and debugging
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/CartResponse'
+        '400':
+          description: 'Invalid productId(s), api version,'
+        '401':
+          description: 'No API-KEY or invalid API-KEY, Guid not matching'
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        '404':
+          description: No cart or item found
+        '500':
+          description: Internal Server Error
+  '/api/cart/{cartId}/items/{itemId}':
+    put:
+      tags:
+        - cart(s)
+      summary: Updates the item in the cart. Only quantity updates allowed.
+      description: Updates item in the cart based on values passed
+      operationId: updateCartItem
+      produces:
+        - application/json
+      parameters:
+        - name: cartId
+          in: path
+          description: Cart Id
+          required: true
+          type: string
+        - name: itemId
+          in: path
+          description: Single item id
+          required: true
+          type: string
+        - name: quantity
+          in: query
+          description: new quantity to be purchased
+          required: true
+          type: string
+        - name: digitalProperty
+          in: header
+          description: Digital property for which the cart was created
+          required: true
+          type: string
+        - name: guid
+          in: header
+          description: User guid for authenticated user scenario
+          required: false
+          type: string
+        - name: User-Agent
+          in: header
+          type: string
+          required: true
+          description: User Agent parameter
+        - name: MSG_ID
+          in: header
+          type: string
+          description: Optional MSG_ID for logging and debugging
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/CartResponse'
+        '400':
+          description: 'Invalid productId(s), api version,'
+        '401':
+          description: 'No API-KEY or invalid API-KEY, guid not matching'
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        '404':
+          description: No cart found
+        '500':
+          description: Internal Server Error
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: API-KEY
+    in: header
+definitions:
+  CartResponse:
+    type: object
+    properties:
+      version:
+        type: number
+      locale:
+        type: string
+      message:
+        type: string
+      msgId:
+        type: string
+      products:
+        type: array
+        items:
+          $ref: '#/definitions/Cart'
+  Cart:
+    type: object
+    properties:
+      id:
+        type: string
+      containsPack:
+        type: boolean
+      totalCommerceItemCount:
+        type: integer
+      containsConfigurableSKU:
+        type: boolean
+      price:
+        $ref: '#/definitions/Price'
+      items:
+        type: array
+        items:
+          $ref: '#/definitions/Item'
+      shippingAddress:
+        $ref: '#/definitions/Address'
+      billingAddress:
+        $ref: '#/definitions/Address'
+  Item:
+    type: object
+    properties:
+      id:
+        type: string
+      removable:
+        type: boolean
+      quantity:
+        type: integer
+      quantityMaximum:
+        type: integer
+      specialOffer:
+        type: boolean
+      purchaseSource:
+        type: string
+      setBusinessStarterKitPriceFree:
+        type: string
+      showSpecialOffer:
+        type: boolean
+      includeFreeBeachbodyOnDemand:
+        type: string
+      skus:
+        type: array
+        items:
+          $ref: '#/definitions/Sku'
+      prices:
+        $ref: '#/definitions/Price'
+      coachBonusAttributes:
+        $ref: '#/definitions/BonusAttributes'
+  APIErrorResponse:
+    type: object
+    properties:
+      version:
+        type: number
+      locale:
+        type: string
+      servicePath:
+        type: string
+      message:
+        type: string
+      msgId:
+        type: string
+      error:
+        $ref: '#/definitions/Error'
+  Product:
+    type: object
+    properties:
+      id:
+        type: string
+      title:
+        type: string
+      description:
+        type: string
+      type:
+        type: string
+      isInventoryStockAvailable:
+        type: boolean
+      dailyNutrition:
+        type: boolean
+      isOnSale:
+        type: boolean
+      visibleInStore:
+        type: boolean
+      isBestSeller:
+        type: boolean
+      isLowInventory:
+        type: boolean
+      dateAvailable:
+        type: string
+      endDate:
+        type: string
+      isBOD:
+        type: boolean
+      performanceNutrition:
+        type: string
+      program:
+        type: string
+      flavor:
+        type: string
+      gender:
+        type: string
+        example: 'male, available on apparel and accessories products'
+      active:
+        type: boolean
+      daysAvailable:
+        type: integer
+      isNew:
+        type: boolean
+      category:
+        $ref: '#/definitions/ProductCategory'
+      media:
+        type: array
+        items:
+          $ref: '#/definitions/Media'
+      disclaimers:
+        type: array
+        items:
+          type: string
+      digitalPropertyDisclaimers:
+        type: array
+        items:
+          type: string
+      onSiteSearchKeywords:
+        type: array
+        items:
+          type: string
+  ProductCategory:
+    type: object
+    properties:
+      productTitle:
+        type: string
+      productDescription:
+        type: string
+      categories:
+        type: array
+        items:
+          $ref: '#/definitions/Category'
+  Category:
+    type: object
+    properties:
+      id:
+        type: string
+      title:
+        type: string
+      subCategories:
+        type: array
+        items:
+          $ref: '#/definitions/Category'
+  Sku:
+    type: object
+    properties:
+      id:
+        type: string
+      title:
+        type: string
+      taxCategory:
+        type: string
+      displayName:
+        type: string
+      titleCart:
+        type: string
+      subTitle1:
+        type: string
+      subTitle2:
+        type: string
+      color:
+        type: string
+        example: 'Black, only available on apparel and equipmentGear'
+      size:
+        type: string
+        example: 'SM, available on apparel and accessories sku'
+      isHomeDirect:
+        type: boolean
+      canView:
+        type: boolean
+      canPurchase:
+        type: boolean
+      maxCartQty:
+        type: integer
+      parentProducts:
+        type: array
+        items:
+          $ref: '#/definitions/Product'
+      disclaimers:
+        type: array
+        items:
+          type: string
+      digitalPropertyDisclaimers:
+        type: array
+        items:
+          type: string
+  Price:
+    type: object
+    properties:
+      currency:
+        type: string
+      retailPrice:
+        type: number
+      userSegmentPrice:
+        type: number
+      promotionPrice:
+        type: number
+      specialOfferPrice:
+        type: number
+  BonusAttributes:
+    type: object
+    properties:
+      personalVolume:
+        type: number
+      commissionVolume:
+        type: number
+  Media:
+    type: object
+    properties:
+      id:
+        type: integer
+      parentId:
+        type: integer
+      type:
+        type: string
+        example: thumbnail / main
+      mediaType:
+        type: string
+        example: 'image,video,word,pdf'
+      source:
+        type: string
+        example: 'cloudinary,brightcove, youtube'
+      url:
+        type: string
+      version:
+        type: string
+        example: cdn caching version
+      altText:
+        type: string
+  Address:
+    type: object
+    properties:
+      firstName:
+        type: string
+      lastName:
+        type: string
+      address1:
+        type: string
+      address2:
+        type: string
+      city:
+        type: string
+      state:
+        type: string
+      postalCode:
+        type: string
+      country:
+        type: string
+      email:
+        type: string
+      phoneNumber:
+        type: string
+  Error:
+    type: object
+    properties:
+      errorCode:
+        type: string
+      errorMessage:
+        type: string
