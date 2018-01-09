@@ -8,6 +8,8 @@
     "id": "STORE_12345", //| ATG Cart ID. ATG Carts have unique identifiers regardless of the client. ATG Carts contain Items. Returns full Response for each valid Cart ID, and error message for each invalid Cart ID along with the invalid Product ID. Invalid Cart IDs do not fail the entire Response for valid Cart IDs |//
   	"totalCommerceItemCount": 1,
 	"containsConfigurableSKU": true,
+	"showSpecialOffer": false,
+	"includeFreeBeachbodyOnDemand": false,
 	"price": {
 	"currency": "USD", //| Based on Country - "USD/CAD/GBP" |//
 	"totalPrice": 313.90, //| Accumulative price paid (Items * Quantity + Shipping + Tax). BCC File - Pricelist: US-REGISTEREDUSER-USD. Example - MDAP21E105971L. Price of item from BCC Pricelist for RegisteredUser (Free Customer) userType |//
@@ -83,8 +85,6 @@
 				"specialOffer": false,
 				"purchaseSource": "PAGE_PDP",
 				"setBusinessStarterKitPriceFree": null,
-				"showSpecialOffer": false,
-				"includeFreeBeachbodyOnDemand": null,
 				"prices": {
 				    "currency": "USD", //| Based on Country - "USD/CAD/GBP" |//
 				    "totalPrice": 311.90, //| Accumulative price paid (Items * Quantity). BCC File - Pricelist: US-REGISTEREDUSER-USD. Example - MDAP21E105971L. Price of item from BCC Pricelist for RegisteredUser (Free Customer) userType |//
