@@ -9,6 +9,7 @@
   	"totalCommerceItemCount": 1,
 	"containsConfigurableSKU": true,
 	"showSpecialOffer": false,
+	"purchaseSource": "PAGE_PDP",
 	"includeFreeBeachbodyOnDemand": false,
 	"price": {
 	"currency": "USD", //| Based on Country - "USD/CAD/GBP" |//
@@ -83,7 +84,6 @@
 				"quantity": 1,
 				"quantityMaximum": 5,
 				"specialOffer": false,
-				"purchaseSource": "PAGE_PDP",
 				"setBusinessStarterKitPriceFree": null,
 				"prices": {
 				    "currency": "USD", //| Based on Country - "USD/CAD/GBP" |//
