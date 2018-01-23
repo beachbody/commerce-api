@@ -101,7 +101,15 @@
 					{
 					"id": "MDSUCLNSO3101HD",  //| ATG Items contain one or more SKUs. WCS Field - Product SKU: SKU. Example - SKU: MDSHK0206N1E101, Metadata ID: 1408457818974. |//
          			"type": "main, configurableOption, addOn", //| ToDo: Add Configurable SKU mappings from BCC. main = Configurable Option main (header) SKU, configurableOption = mandatory selection, addOn = added to Cart without user's selection |//
-					"title": "", //| WCS Field - Product SKU: SKU Title. Example - SKU: MDSHK0206N1E101, Metadata ID: 1408457818974. |//
+				"configurableOptions": [ //| Configurable SKU Headers contain configurableOptions. This array allows the user to switch configurableOptions in the Cart. The common scenario is switching flavors in a Challenge Pack or Performance Pack. Example - SKU: MDSHK0206N1E101, Metadata ID: 1408457818974. |//
+					{
+						"id": "MDBCPBOD",
+						"link": "/service/rest/v1/api/catalog/skus/MDBCPBOD",
+						"type": "addOn,configurableOption",
+						"displayName": "Shakeology Vanilla Pkt 24 Srv HD"
+					}
+				],
+				"title": "", //| WCS Field - Product SKU: SKU Title. Example - SKU: MDSHK0206N1E101, Metadata ID: 1408457818974. |//
          			"subTitle1": "", //| WCS Field - Product SKU: SKU SubTitle 1. Example - SKU: MDSHK0206N1E101, Metadata ID: 1408457818974. |//
          			"subTitle2": "", //| WCS Field - Product SKU: SKU SubTitle 2. Example - SKU: MDSHK0206N1E101, Metadata ID: 1408457818974. |//
          			"titleCart": "", //| WCS Field - Product SKU: SKU Title In Cart. Example - SKU: MDSHK0206N1E101, Metadata ID: 1408457818974. |//
