@@ -1,4 +1,4 @@
-// /api/catalog/cart(cartId: optional, digitalProperty: mandatory, locale: optional (defaults to en_us), cartDetails: optional (defaults to true, returns all cart details), userType: optional (REGISTEREDUSER, COACH, etc.), allParentProducts: optional, defaults to true)
+// /api/catalog/cart(cartId: optional, digitalProperty: mandatory, locale: optional (defaults to en_us), cartDetails: optional (defaults to true, returns all cart details), userType: optional (REGISTEREDUSER, COACH, etc.), allParentProducts: optional, defaults to true, configurableOption: optional (e.g. "MDSHK0209N3E101"), addOn: optional (e.g. "MDCLUB9"))
 {
   "msgId": "string", //| Unique message id for logging and debugging |//
   "message": "string", //| Optional debug message, in case request is not completely fulfilled,  |//
