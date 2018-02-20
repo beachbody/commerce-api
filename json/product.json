@@ -111,13 +111,9 @@
       "metaDescription": "", //| WCS Field - Meta Description: Meta Title. Example - Meta Data: Shakeology Strawberry - Meta Data _en_US, Metadata ID: 1408638915453. SEO Meta Tag for Description. Field type: HTML, Field length: 255 characters |//
       "metaRobots": "", //| WCS Field - Meta Robots: Meta Title. Example - Meta Data: Shakeology Strawberry - Meta Data _en_US, Metadata ID: 1408638915453. SEO Meta Tag for Robots. Field type: HTML, Field length: 255 characters |//
       "promotionalMessage" : "", //| WCS Field - Product: Promotion Message. Example - Product: 21DayFixShakeologyChallengePack, Metadata ID: 1408457800589. Temporary promotional copy. Field type: HTML, Field length: 250 characters |//
-      "disclaimers": [ //| Product Global disclaimers that are returned for all Digital Properies (e.g. Wave 1, BOD, Apple). Order set by rank order in BCC |//
+      "disclaimers": [ //| Product Global and digitalPropery disclaimers. Order set by rank order in BCC |//
         "Shakeology Subscription: Starting in 30 days...", //| WCS Field - Product Disclaimer: Disclaimer Body. Example - Product Disclaimer: Shakeology - Continuity - Disclaimer - en_US, Metadata ID: 1409028021209. BCC Field - Disclaimer Types. Example - Product: SHKStrawberry. Content & Sort order maintained in WSC. Product / SKU mapping maintained in BCC |//
         "Beachbody On Demand Membership: After your free 30-day trial..." //| Same as above disclaimer, returned in Sort Order |//
-      ],
-      "digitalPropertyDisclaimers": [ //| Product Digital Property specific disclaimers that are only returned for digitalProperty in the API Request (e.g. Apple). Order set by rank order for that Digital Property in BCC |//
-        "Apple Shakeology Subscription: Starting in 30 days...", //| ToDo: Develop this in the BCC. Content & Sort order maintained in WSC. Product / SKU mapping maintained in BCC |//
-        "Apple Beachbody On Demand Membership: After your free 30-day trial..."  //| Same as above digitalPropertyDisclaimers, returned in Sort Order |//
       ],
         "childSKUs": [
         { 
