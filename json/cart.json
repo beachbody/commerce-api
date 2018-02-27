@@ -84,6 +84,9 @@
 				"quantity": 1,
 				"quantityMaximum": 5,
 				"specialOffer": false,
+				"specialOffers": {
+				"id": "100001" //| BCC specialOffer ID. Key reference to the specialOffers node. Unique identifier for the Special Offer, which references a BCC Promotion. Example: specialOffer ID: 100001 |// 
+				},
 				"setBusinessStarterKitPriceFree": null,
 				"prices": {
 				    "currency": "USD", //| Based on Country - "USD/CAD/GBP" |//
@@ -191,7 +194,72 @@
 				"disclaimers": [ //| Sku Global and digitalPropery disclaimers. Order set by rank order in BCC |//
 				  "Shakeology Subscription: Starting in 30 days...", //| WCS Field - Product Disclaimer: Disclaimer Body. Example - Product Disclaimer: Shakeology - Continuity - Disclaimer - en_US, Metadata ID: 1409028021209. BCC Field - Disclaimer Types. Example - Product: SHKStrawberry. Content & Sort order maintained in WSC. Product / SKU mapping maintained in BCC |//
 				  "Beachbody On Demand Membership: After your free 30-day trial..." //| Same as above disclaimer, returned in Sort Order |//
-				  ]
+				  ],
+				 "specialOffers":[
+				"id": "100001", //| BCC specialOffer ID. Unique identifier for the Special Offer, which references a BCC Promotion. Example: specialOffer ID: 100001 |// 
+				"product": "21DBase", //| BCC Product that is offered within the Special Offer. Example: Product ID: 21DBase |// 
+				"skus":[
+					{
+					"id": "MDSUCLNSO3101HD",  //| ATG Items contain one or more SKUs. WCS Field - Product SKU: SKU. Example - SKU: MDSHK0206N1E101, Metadata ID: 1408457818974. |//
+         			"type": "main, configurableOption, addOn", //| ToDo: Add Configurable SKU mappings from BCC. main = Configurable Option main (header) SKU, configurableOption = mandatory selection, addOn = added to Cart without user's selection |//
+				"configurableOptions": [ //| Configurable SKU Headers contain configurableOptions. This array allows the user to switch configurableOptions in the Cart. The common scenario is switching flavors in a Challenge Pack or Performance Pack. Example - SKU: MDSHK0206N1E101, Metadata ID: 1408457818974. |//
+					{
+						"id": "MDBCPBOD",
+						"link": "/service/rest/v1/api/catalog/skus/MDBCPBOD",
+						"type": "addOn,configurableOption",
+						"displayName": "Shakeology Vanilla Pkt 24 Srv HD"
+					}
+				],
+				"description": "By purchasing a Challenge Pack you qualify for...",
+				"prices": {
+				    "currency": "USD", //| Based on Country - "USD/CAD/GBP" |//
+				    "totalPrice": 311.90, //| Accumulative price paid (Items * Quantity). BCC File - Pricelist: US-REGISTEREDUSER-USD. Example - MDAP21E105971L. Price of item from BCC Pricelist for RegisteredUser (Free Customer) userType |//
+				    "retailPrice": 155.95, //| BCC File - Pricelist: US-REGISTEREDUSER-USD. Example - MDAP21E105971L. Price of item from BCC Pricelist for RegisteredUser (Free Customer) userType |//
+				    "userSegmentPrice": 93.57, //| BCC File - Pricelist: US-REGISTEREDUSER-USD / US-COACH-USD based on userType. Example - MDAP21E105971L. Price of item from BCC Pricelist for userType. Synonymous with 'Tier' price on ATG |//
+				    "promotionPrice": 124.76, //| Price of item from BCC Sales Pricelist |//
+				    "specialOfferPrice": 50.00 //| BCC Field - Merchandising: Promotions. Example: 3-Day Refresh Special Offer - US. Programmatically calculated based on cart content using the Special Offer business logic in the BCC. Dependency on the Cart API endpoint's availability |//
+				    },
+				  "coachBonusAttributes": {
+				    "personalVolume": 5.0, //| Merchandising: Search: CCompensation Item. Example: MDAPTBB107251S:ROOT-COMPENSATION-LIST. Based on SKU |//
+				    "commissionVolume": 5.0 //| Merchandising: Search: CCompensation Item. Example: MDAPTBB107251S:ROOT-COMPENSATION-LIST. Based on SKU |//
+				  },
+				  "shipping": {
+					"id": "sg25460531",
+					"label": "Smart Delivery (5 to 7 business days)",
+					"taxCategory": "123456", //| BCC Field - SKU: Tax Category. Example - SKU: MD21DDVD2109. Set in PIM. Used in the call to Sabrix for the tax calculation in combination with the ship to address |//
+					"price": {
+						"amount": 2,
+						"raw": 2 //| ToDo: What is this a reference to in BCC ? |//
+					},
+										"title": "", //| WCS Field - Product SKU: SKU Title. Example - SKU: MDSHK0206N1E101, Metadata ID: 1408457818974. |//
+         			"active": false, //| WCS Field - Product SKU: SKU Title In Cart. Example - SKU: MDSHK0206N1E101, Metadata ID: 1408457818974. |//
+         			"isOutOfStock": false, //| BCC Field - SKU: Is Out of Stock. Example - SKU: MD21DDVD2109. Derived boolean value. Calculated based on inventory feed from EBS to ATG, and current SKUs sold count since the last inventory synchronization |//
+         			"eligibleForOutOfStock": false, //| BCC Field - SKU: OutOfStockProduct. Example - SKU: MD21DDVD2109. Curated boolean option to include in inventory feed from EBS to ATG to determine whether Product/SKUs are Out of Stock |//
+         			"visibleInStore": true, //| BCC Field - SKU: Visible In Store. Example - SKU: MD21DDVD2109. Curated boolean option to show/hide Products in the eCommerce user facing websites as an override. Controlled in the BCC |//
+         			"eligibleForResale": true, //| ToDo: Is this available in the BCC or just in DynAdmin |//
+         			"stock": -1, //| ToDo: Is this available in the BCC or just in DynAdmin |//
+         			"canView": true, //| ToDo: Is this available in the BCC or just in DynAdmin |//
+         			"canPurchase": true, //| BCC Field - SKU: Customer Types. Example - SKU: MD21DDVD2109. Derived value based on userType (e.g. Coach-only Products for Coaches, Challenge Packs for non-Coaches) |//
+         			"taxCategory": "123456", //| BCC Field - SKU: Tax Category. Example - SKU: MD21DDVD2109. Set in PIM. Used in the call to Sabrix for the tax calculation in combination with the ship to address |//
+         			"maxCartQty": 5,  //| ToDo: Is this available in the BCC or just in DynAdmin |//
+         			"displayName": "Ult Reset Soothe HD", //| BCC Field - SKU: Display Name. Example - SKU: MD21DDVD2109. Controlled in the BCC |//
+         			"dateAvailable": "2011-08-12T20:17:46.384Z", //| BCC Field - SKU: Date available. Example - SKU: MD21DDVD2109. Zulu (ISO 8061) |//
+         			"endDate": "2011-08-12T20:17:46.384Z", //| ToDo: Is this exposed in the BCC or just in Dynadmin? Maintained in the PIM to end_date Product for both eCommerce initial sales as well as Customer Service support of existing sales. Zulu (ISO 8061) |//
+         			"isHomeDirect": false, //| BCC Field - SKU: Is Home Direct. Example - MD21DDVD2109. Curated boolean meta data. Tagged in the PIM. Synonym for Subscription / Continuity / AutoShip |//
+         			  "media": [
+					  { //| Question - Examples: main, etc. Does WCS/ATG have groupings other than main? Answer: WCS/ATG differentiates between Category Detail Page images and Product Detail Page imagesv
+						"type": "main, thumbnail, stamp", //| WCS Field - Image: Main Image / Thumbnail Image / Stamp image. Example - Image: 21 Day Fix Base Kit PDP, Metadata ID: 1408686357132. Stamp images are either generated from automated BCC attributes or added to the PDP image in WCS as a custom image |//
+						"mediaType": "video, image, pdf, word, etc", //| WCS Field - Cloudinary Image Meta Data: Media Content Definition / Product Video: Media Content Definition. Examples - Cloudinary Image Meta Data: 21df-base-kit-pdp-930x960-us-english-062016, Metadata ID: 1408469599974 / Product Video: YouTube Video Test - Product Video, Metadata ID: 1409108833676. |//
+						"url": "http://img1.beachbodyimages.com/...", //| WCS Field - Cloudinary Image Meta Data: Cloudinary Image URL / Link: Link Href. Examples - Image: Cloudinary Image Meta Data: 21df-base-kit-pdp-930x960-us-english-062016, Metadata ID: 1408469599974 / Link: Shakeology Strawberry - PDF Link - Ingredients - en_US, Metadata ID: 1408796756818. Full URL path images, pdfs, Word documents. Does not apply to videos |//
+						"parentId": "123456", //| Respository field - TBD. Used to associate thumbnail content (i.e. images, title) with main content (images, videos) |//
+						"title": "", //| WCS Field - Video: Caption. Example - Video: YouTube Video Test, Metadata ID: 1409108838947. Media caption. Applicable for videos. Field type: text, Field length: 255 characters |//
+						"source": "cloudinary, brightcove, youtube, etc.", //| WCS Field - Cloudinary Image Meta Data: Cloudinary Version / Video: Video Type. Examples - Cloudinary Image Meta Data: 21df-base-kit-pdp-930x960-us-english-062016, Metadata ID: 1408469599974 / Video: YouTube Video Test, Metadata ID: 1409108838947. Field type: text |//
+						"version": "123456", //| WCS Field - Cloudinary Image Meta Data: Cloudinary Version. Example - Cloudinary Image Meta Data: 21df-base-kit-pdp-930x960-us-english-062016, Metadata ID: 1408469599974. CDN caching version |//
+						"id": "123456", //| WCS Field - Video: Video ID. Example - Video: YouTube Video Test, Metadata ID: 1409108838947. BrightCove or YouTube video ID for embedded players. Not a full URL/URIc |//
+						"altText": "" //| WCS Field - Cloudinary Image Meta Data: Media Alt Text / Video: Media Alt Text. Examples - Cloudinary Image Meta Data: 21df-base-kit-pdp-930x960-us-english-062016, Metadata ID: 1408469599974 / Video: YouTube Video Test, Metadata ID: 1409108838947. SEO or ADA (Americas With Disabilities Act) alt tag. Field type: text, Field length: 255 characters |//
+					  }
+					],
+				]
 				}
                 
           		  }
