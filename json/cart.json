@@ -84,9 +84,9 @@
 				"quantity": 1,
 				"quantityMaximum": 5,
 				"specialOffer": false,
-				"specialOffers": {
+				"specialOffers": [{
 				"id": "100001" //| BCC specialOffer ID. Key reference to the specialOffers node. Unique identifier for the Special Offer, which references a BCC Promotion. Example: specialOffer ID: 100001 |// 
-				},
+				}],
 				"setBusinessStarterKitPriceFree": null,
 				"prices": {
 				    "currency": "USD", //| Based on Country - "USD/CAD/GBP" |//
