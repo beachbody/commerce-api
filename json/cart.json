@@ -195,7 +195,7 @@
 				  "Shakeology Subscription: Starting in 30 days...", //| WCS Field - Product Disclaimer: Disclaimer Body. Example - Product Disclaimer: Shakeology - Continuity - Disclaimer - en_US, Metadata ID: 1409028021209. BCC Field - Disclaimer Types. Example - Product: SHKStrawberry. Content & Sort order maintained in WSC. Product / SKU mapping maintained in BCC |//
 				  "Beachbody On Demand Membership: After your free 30-day trial..." //| Same as above disclaimer, returned in Sort Order |//
 				  ],
-				 "specialOffers":[
+				 "specialOffers":[ {
 				"id": "100001", //| BCC specialOffer ID. Unique identifier for the Special Offer, which references a BCC Promotion. Example: specialOffer ID: 100001 |// 
 				"product": "21DBase", //| BCC Product that is offered within the Special Offer. Example: Product ID: 21DBase |// 
 				"skus":[
@@ -263,6 +263,7 @@
 				}
                 
           		  }
+				  }
 		]
 		}
 	]
