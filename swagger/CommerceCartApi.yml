@@ -8,40 +8,52 @@ basePath: /service/rest/v1
 schemes:
   - http
 paths:
-  /api/cart:
+  '/api/cart':
     get:
       tags:
         - cart(s)
-      summary: 'Find the cart for the cartId, guid and digitalProperty.'
-      description: >-
-        Return cart by the cart Id passed. If the cart belongs to a persisted
-        profile but no guid passed throw error. If no cart id passed, try to
-        find cart with guid and digital property combination and validate
-        against the guid of the profile associated with the cart
+      summary: NOT IMPLEMENTED. Find the cart for guid and digitalProperty.
+      description: Return cart by guid and digitalProperty combination. If the cart belongs to a persisted profile but guid doesn't match throw error.
       operationId: findCart
       produces:
         - application/json
       parameters:
-        - name: cartId
-          in: query
-          description: cartId parameter
-          required: false
-          type: string
+
         - name: guid
           in: header
           type: string
-          required: false
-          description: 'User guid, if the cart is associated with a signed in user.'
+          required: true
+          description: User guid, if the cart is associated with a signed in user. 
+       
+        - name: locale
+          in: header
+          type: string
+          required: true
+          description: Locale 
+
+        - name: Content-Type
+          in: header
+          type: string
+          required: true
+          description: application/json.
+
         - name: digitalProperty
           in: header
           type: string
           required: true
-          description: Digital property that this cart was created for. For ex. BOD
+          description: Digital property that this cart was created for. For ex. BOD   
+
+        - name: API-KEY
+          in: header
+          type: string
+          required: true
+                    
         - name: User-Agent
           in: header
           type: string
           required: true
           description: User Agent parameter
+          
         - name: MSG_ID
           in: header
           type: string
@@ -61,52 +73,244 @@ paths:
           description: No cart found for given guid and digital property
         '500':
           description: Internal Server Error
-  /api/cart/items:
+    
+
     post:
       tags:
         - cart(s)
       summary: Add the sku (and it's sub skus passed) to the cart.
-      description: >-
-        Adds item to the cart based on values passed. If a cartId is not passed,
-        a new cart is created and persisted.
+      description: Adds item to the cart based on values passed. If a cartId is not passed, a new cart is created and persisted.
       operationId: addItemToCart
       produces:
         - application/json
+      consumes:
+        - application/json     
+
       parameters:
-        - name: productId
-          in: query
-          description: Product Id for the item. For example. 21DChallengePack
-          required: true
+        - in: body
+          name: user
+          description: The user to create.
+          schema:
+            type: object
+            properties:
+              productId:
+                type: string
+              skuId:
+                type: string
+              configurableOption:
+                type: string
+              addOn :
+                type: string
+              quantity:
+                type: integer
+      
+        - name: guid
+          in: header
           type: string
-        - name: skuId
-          in: query
-          description: 'Sku Id for the item, For exmaple. MDBCP21D'
-          required: true
-          type: string
-        - name: subSkuId
-          in: query
-          description: >-
-            Sub Sku Id, only applies to ChallengePacks, Performance packs etc.
-            For ex. MDSHK0202N1E102
           required: false
+          description: User guid, if the cart is associated with a signed in user. 
+
+        - name: API-KEY
+          in: header
           type: string
-        - name: subSkuMembershipId
-          in: query
-          description: >-
-            Sub Sku Membership Id, only applies to ChallengePacks, Performance
-            packs etc. with memebership addOn For ex. MDCABODDVD50
-          required: false
-          type: string
-        - name: quantity
-          in: query
-          description: 'Item quantity to be added, For ex. 2'
           required: true
+
+        - name: Content-Type
+          in: header
           type: string
+          required: true
+          description: application/json. 
+
+        - name: digitalProperty
+          in: header
+          type: string
+          required: true
+          description: Digital property that this cart was created for. For ex. BOD 
+          
+        - name: locale
+          in: header
+          type: string
+          required: true
+          description: Locale           
+          
         - name: User-Agent
           in: header
           type: string
           required: true
           description: User Agent parameter
+          
+        - name: MSG_ID
+          in: header
+          type: string
+          description: Optional MSG_ID for logging and debugging
+          
+        - name: purchaseSource
+          in: query
+          type: string
+          description: none
+          
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/CartResponse'
+        '400':
+          description: 'Invalid productId(s), api version,'
+        '401':
+          description: No API-KEY or invalid API-KEY
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        '404':
+          description: No cart found
+        '500':
+          description: Internal Server Error
+
+
+  '/api/cart/{cartId}':
+    get:
+      tags:
+        - cart(s)
+      summary: Find the cart for the cartId, guid and digitalProperty.
+      description: Return cart by the cart Id passed. If the cart belongs to a persisted profile but no guid passed throw error. If no cart id passed, try to find cart with guid and digital property combination and validate against the guid of the profile associated with the cart
+      operationId: findCartById
+      produces:
+        - application/json
+      parameters:
+        - name: cartId
+          in: path
+          description: Cart Id Path Param
+          required: true
+          type: string
+
+        - name: API-KEY
+          in: header
+          type: string
+          required: true
+                    
+        - name: guid
+          in: header
+          type: string
+          required: false
+          description: User guid, if the cart is associated with a signed in user. 
+
+        - name: Content-Type
+          in: header
+          type: string
+          required: true
+          description: application/json. 
+
+        - name: digitalProperty
+          in: header
+          type: string
+          required: true
+          description: Digital property that this cart was created for. For ex. BOD 
+          
+        - name: locale
+          in: header
+          type: string
+          required: true
+          description: Locale           
+          
+        - name: User-Agent
+          in: header
+          type: string
+          required: true
+          description: User Agent parameter
+          
+        - name: MSG_ID
+          in: header
+          type: string
+          description: Optional MSG_ID for logging and debugging
+          
+          
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/CartResponse'
+        '400':
+          description: 'for ex. Invalid api version,'
+        '401':
+          description: No API-KEY or invalid API-KEY Or cart belongs to some other user
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        '404':
+          description: No cart found for given guid and digital property
+        '500':
+          description: Internal Server Error
+    
+
+    post:
+      tags:
+        - cart(s)
+      summary: Add the sku (and it's sub skus passed) to the cart.
+      description: Adds item to the cart based on values passed. If a cartId is not passed, a new cart is created and persisted.
+      operationId: addItemToExistingCart
+      produces:
+        - application/json
+      consumes:
+        - application/json     
+
+      parameters:
+      
+        - name: cartId
+          in: path
+          description: Cart Id Path Param
+          required: true
+          type: string
+          
+        - in: body
+          name: user
+          description: The user to create.
+          schema:
+            type: object
+            properties:
+              productId:
+                type: string
+              skuId:
+                type: string
+              quantity:
+                type: integer
+              subSkus:
+                type: array
+                items:
+                  type: string
+      
+        - name: guid
+          in: header
+          type: string
+          required: false
+          description: User guid, if the cart is associated with a signed in user. 
+
+        - name: API-KEY
+          in: header
+          type: string
+          required: true
+          
+        - name: digitalProperty
+          in: header
+          type: string
+          required: true
+          description: Digital property that this cart was created for. For ex. BOD 
+          
+        - name: locale
+          in: header
+          type: string
+          required: true
+          description: Locale           
+          
+        - name: Content-Type
+          in: header
+          type: string
+          required: true
+          description: application/json. 
+          
+        - name: User-Agent
+          in: header
+          type: string
+          required: true
+          description: User Agent parameter
+          
         - name: MSG_ID
           in: header
           type: string
@@ -126,6 +330,8 @@ paths:
           description: No cart found
         '500':
           description: Internal Server Error
+
+
   '/api/cart/{cartId}/item/{itemId}':
     delete:
       tags:
@@ -141,26 +347,48 @@ paths:
           description: Cart Id
           required: true
           type: string
+          
         - name: itemId
           in: path
           description: Cart Item Id
           required: true
+          type: string 
+          
+        - name: Content-Type
+          in: header
           type: string
+          required: true
+          description: application/json. 
+
+        - name: API-KEY
+          in: header
+          type: string
+          required: true
+                    
         - name: digitalProperty
           in: header
           description: Digital property for which the cart was created
           required: true
           type: string
+          
         - name: guid
           in: header
           description: User guid for authenticated user
           required: false
+          type: string          
+
+        - name: locale
+          in: header
           type: string
+          required: true
+          description: Locale 
+
         - name: User-Agent
           in: header
           type: string
           required: true
           description: User Agent parameter
+          
         - name: MSG_ID
           in: header
           type: string
@@ -173,13 +401,14 @@ paths:
         '400':
           description: 'Invalid productId(s), api version,'
         '401':
-          description: 'No API-KEY or invalid API-KEY, Guid not matching'
+          description: No API-KEY or invalid API-KEY, Guid not matching
           schema:
             $ref: '#/definitions/APIErrorResponse'
         '404':
           description: No cart or item found
         '500':
           description: Internal Server Error
+
   '/api/cart/{cartId}/items/{itemId}':
     put:
       tags:
@@ -204,17 +433,24 @@ paths:
           in: query
           description: new quantity to be purchased
           required: true
-          type: string
+          type: string          
         - name: digitalProperty
           in: header
           description: Digital property for which the cart was created
           required: true
           type: string
+          
+        - name: locale
+          in: header
+          type: string
+          required: true
+          description: Locale           
+          
         - name: guid
           in: header
           description: User guid for authenticated user scenario
           required: false
-          type: string
+          type: string          
         - name: User-Agent
           in: header
           type: string
@@ -232,19 +468,35 @@ paths:
         '400':
           description: 'Invalid productId(s), api version,'
         '401':
-          description: 'No API-KEY or invalid API-KEY, guid not matching'
+          description: No API-KEY or invalid API-KEY, guid not matching
           schema:
             $ref: '#/definitions/APIErrorResponse'
         '404':
           description: No cart found
         '500':
           description: Internal Server Error
+
+          
 securityDefinitions:
   api_key:
     type: apiKey
     name: API-KEY
     in: header
 definitions:
+  CartRequest:
+    type: object
+    properties:
+      skuId:
+        type: string
+      productId:
+        type: string
+      quantity:
+        type: integer
+      subSkus:
+        type: array
+        items:
+          type: string
+        
   CartResponse:
     type: object
     properties:
@@ -263,7 +515,7 @@ definitions:
   Cart:
     type: object
     properties:
-      id:
+      id: 
         type: string
       containsPack:
         type: boolean
@@ -271,45 +523,66 @@ definitions:
         type: integer
       containsConfigurableSKU:
         type: boolean
+      showSpecialOffers:
+        type: boolean
       price:
         $ref: '#/definitions/Price'
+      coachBonusAttributes:
+        $ref: '#/definitions/BonusAttributes'  
+      specialOffers:  
+        type: array
+        items:
+          $ref: '#/definitions/SpecialOffer' 
       items:
         type: array
         items:
           $ref: '#/definitions/Item'
+        
       shippingAddress:
         $ref: '#/definitions/Address'
       billingAddress:
-        $ref: '#/definitions/Address'
+        $ref: '#/definitions/Address'   
+        
+      shipping:
+        $ref: '#/definitions/Shipping'        
+        
+        
+      
   Item:
     type: object
     properties:
-      id:
+      id: 
         type: string
       removable:
         type: boolean
       quantity:
         type: integer
       quantityMaximum:
-        type: integer
+        type: integer   
       specialOffer:
-        type: boolean
+        type: boolean  
       purchaseSource:
         type: string
       setBusinessStarterKitPriceFree:
         type: string
       showSpecialOffer:
-        type: boolean
+        type: boolean 
       includeFreeBeachbodyOnDemand:
         type: string
+      
       skus:
         type: array
         items:
           $ref: '#/definitions/Sku'
+
       prices:
         $ref: '#/definitions/Price'
       coachBonusAttributes:
-        $ref: '#/definitions/BonusAttributes'
+        $ref: '#/definitions/BonusAttributes'        
+      
+
+      
+    
   APIErrorResponse:
     type: object
     properties:
@@ -369,6 +642,7 @@ definitions:
         type: integer
       isNew:
         type: boolean
+
       category:
         $ref: '#/definitions/ProductCategory'
       media:
@@ -448,10 +722,8 @@ definitions:
         type: array
         items:
           type: string
-      digitalPropertyDisclaimers:
-        type: array
-        items:
-          type: string
+
+
   Price:
     type: object
     properties:
@@ -465,6 +737,7 @@ definitions:
         type: number
       specialOfferPrice:
         type: number
+        
   BonusAttributes:
     type: object
     properties:
@@ -472,6 +745,29 @@ definitions:
         type: number
       commissionVolume:
         type: number
+      retailCommission:
+        type: number
+      clubCommission:
+        type: number       
+      subscriptionCommission:
+        type: number
+      fastStartAmount:
+        type: number       
+
+  SpecialOffer:
+    type: object
+    properties:
+      id:
+        type: string
+      description:
+        type: string
+      product:
+        $ref: '#/definitions/Product'
+      skus:
+        type: array
+        items:
+          $ref: '#/definitions/Sku'        
+        
   Media:
     type: object
     properties:
@@ -498,7 +794,7 @@ definitions:
   Address:
     type: object
     properties:
-      firstName:
+      firstName: 
         type: string
       lastName:
         type: string
@@ -509,7 +805,7 @@ definitions:
       city:
         type: string
       state:
-        type: string
+       type: string
       postalCode:
         type: string
       country:
@@ -518,6 +814,16 @@ definitions:
         type: string
       phoneNumber:
         type: string
+        
+  Shipping:
+    type: object
+    properties:
+      id: 
+        type: string
+      label:
+        type: string
+      
+        
   Error:
     type: object
     properties:
