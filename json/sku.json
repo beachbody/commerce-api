@@ -53,7 +53,17 @@
 	  "coachBonusAttributes": {
             "personalVolume": 5.0, //| Merchandising: Search: CCompensation Item. Example: MDAPTBB107251S:ROOT-COMPENSATION-LIST. Based on SKU |//
             "commissionVolume": 5.0 //| Merchandising: Search: CCompensation Item. Example: MDAPTBB107251S:ROOT-COMPENSATION-LIST. Based on SKU |//
-          }
+            "retailCommission" : 10.0,
+	    "clubCommission" : 10.0,
+	    "subscriptionCommission" : 10.0,
+            "fastStartAmount" : 10.0
+	    
+	  },
+	  "entitlement": {
+	      "id": "EntitlementId",
+	      "bodUrl" : "https://beachbodyondemand.com/",
+	      "description" : "Description about entitlement, promotions"	  
+	  }
         }
       ]
       
