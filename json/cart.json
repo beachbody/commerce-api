@@ -5,8 +5,9 @@
   "version": "1.0", //| Schema Version |//
   "locale": "string", //|Return the locale that was passed, if none return the one used by default (en_US)|//
   "cart": {
-    "id": "STORE_12345", //| ATG Cart ID. ATG Carts have unique identifiers regardless of the client. ATG Carts contain Items. Returns full Response for each valid Cart ID, and error message for each invalid Cart ID along with the invalid Product ID. Invalid Cart IDs do not fail the entire Response for valid Cart IDs |//
-  	"totalCommerceItemCount": 1,
+    	"id": "STORE_12345", //| ATG Cart ID. ATG Carts have unique identifiers regardless of the client. ATG Carts contain Items. Returns full Response for each valid Cart ID, and error message for each invalid Cart ID along with the invalid Product ID. Invalid Cart IDs do not fail the entire Response for valid Cart IDs |//
+  	"cartRefId": "oFCUz8sC%2B0HTcNKgPQxXvA%3D%3D", //|encrypted cart id
+	 "totalCommerceItemCount": 1,
 	"containsConfigurableSKU": true,
 	"showSpecialOffer": false,
 	"purchaseSource": "PAGE_PDP",
@@ -327,92 +328,9 @@
                 "isLowInventory": false,
                 "isBOD": false,
                 "active": true
-            },
-            {
-                "id": "BBPerfEnergize10Pk",
-                "title": "Beachbody Performance™ Energize 10-Pack",
-                "description": "<p>\n\tNow wherever you go, you can grab perfectly measured packets of Energize to take with you. Convenient and simple-to-use, this new 10-pack option makes working out anytime, anywhere easier than ever. Simply tear open a packet, mix it with water, and blast through your workouts with a surge of energy!*</p>\n",
-                "media": [
-                    {
-                        "id": "1",
-                        "type": "main",
-                        "mediaType": "image",
-                        "url": "https://img1.beachbodyimages.com/teambeachbody/image/upload/Teambeachbody/shared_assets/Shop/Nutrition/Beachbody Performance/Beachbody Performance Energize/Packets/PDP/Product/bbp-energize-10srv-pack-pdp-930-960-us-eng-101216.png",
-                        "source": "cloudinary"
-                    }
-                ],
-                "childSkus": [
-                    {
-                        "canPurchase": true,
-                        "maxCartQty": 5,
-                        "id": "MDACCMAT2115",
-                        "isHomeDirect": false,
-                        "visibleInStore": true,
-                        "title": "Core Comfort Mat",
-                        "stock": -1,
-                        "canView": true,
-                        "prices": {
-                            "retailPrice": 24.95,
-                            "currency": "USD"
-                        },
-                        "displayName": "Core Comfort Mat",
-                        "titleCart": "Core Comfort Mat",
-                        "active": true
-                    }
-                ],
-                "isNew": false,
-                "isInventoryStockAvailable": true,
-                "dailyNutrition": false,
-                "isOnSale": false,
-                "isBestSeller": true,
-                "isLowInventory": false,
-                "isBOD": false,
-                "performanceNutrition": "Performance Line",
-                "active": true
-            },
-            {
-                "id": "BBPTrialPk",
-                "title": "Beachbody Performance<sup>&trade;</sup> Trial Pack",
-                "description": "<p>\n\tThe Beachbody Performance Trial Pack is the perfect way to try all 5 performance formulas before you buy the full-sized tubs. You&#39;ll get one single-serve packet of each Beachbody Performance product: Energize, Hydrate, Recover Orange, Recover Chocolate, Recharge, and Creatine.</p>\n",
-                "media": [
-                    {
-                        "id": "1",
-                        "type": "main",
-                        "mediaType": "image",
-                        "url": "https://img1.beachbodyimages.com/teambeachbody/image/upload/Teambeachbody/shared_assets/Shop/Nutrition/Beachbody Performance/Beachbody-Performance-Sampler/PDP/Product/bbp-sampler-pack-pdp-930-960-us-eng-081616.png",
-                        "source": "cloudinary"
-                    }
-                ],
-                "childSkus": [
-                    {
-                        "canPurchase": true,
-                        "maxCartQty": 5,
-                        "id": "MDACCMAT2115",
-                        "isHomeDirect": false,
-                        "visibleInStore": true,
-                        "title": "Core Comfort Mat",
-                        "stock": -1,
-                        "canView": true,
-                        "prices": {
-                            "retailPrice": 24.95,
-                            "currency": "USD"
-                        },
-                        "displayName": "Core Comfort Mat",
-                        "titleCart": "Core Comfort Mat",
-                        "active": true
-                    }
-                ],
-                "isNew": false,
-                "isInventoryStockAvailable": true,
-                "dailyNutrition": false,
-                "isOnSale": false,
-                "visibleInStore": true,
-                "isBestSeller": false,
-                "isLowInventory": false,
-                "isBOD": false,
-                "performanceNutrition": "Performance Line",
-                "active": true
             }
+           
+           
         ]
     }    
 }
