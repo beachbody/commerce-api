@@ -133,6 +133,7 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Product'
+          
   SkuResponse:
     type: object
     properties:
@@ -146,6 +147,7 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Sku'
+          
   APIErrorResponse:
     type: object
     properties:
@@ -159,30 +161,94 @@ definitions:
         type: string
       error:
         $ref: '#/definitions/Error'
+
+
   Product:
     type: object
     properties:
       id:
         type: string
+      title:
+        type: string
+      description:
+        type: string
+      type:
+        type: string
+      isInventoryStockAvailable:
+        type: boolean
+      dailyNutrition:
+        type: boolean
+      isOnSale:
+        type: boolean
+      visibleInStore:
+        type: boolean
+      isBestSeller:
+        type: boolean
+      isLowInventory:
+        type: boolean
+      dateAvailable:
+        type: string
+      endDate:
+        type: string
+      isBOD:
+        type: boolean
+      performanceNutrition:
+        type: string
+      program:
+        type: string
+      flavor:
+        type: string
+      gender:
+        type: string
+        example: 'male, available on apparel and accessories products'
+      active:
+        type: boolean
+      daysAvailable:
+        type: integer
       isNew:
         type: boolean
-      childSkus:
-        type: array
-        items:
-          $ref: '#/definitions/Sku'
+
       category:
-        $ref: '#/definitions/Category'
+        $ref: '#/definitions/ProductCategory'
       media:
         type: array
         items:
           $ref: '#/definitions/Media'
-  Category:
+      disclaimers:
+        type: array
+        items:
+          type: string
+      digitalPropertyDisclaimers:
+        type: array
+        items:
+          type: string
+      onSiteSearchKeywords:
+        type: array
+        items:
+          type: string
+  ProductCategory:
     type: object
     properties:
       productTitle:
         type: string
       productDescription:
         type: string
+      categories:
+        type: array
+        items:
+          $ref: '#/definitions/Category'
+  
+  Category:
+    type: object
+    properties:
+      id:
+        type: string
+      title:
+        type: string
+      subCategories:
+        type: array
+        items:
+          $ref: '#/definitions/Category'
   Sku:
     type: object
     properties:
@@ -200,6 +266,12 @@ definitions:
         type: string
       subTitle2:
         type: string
+      color:
+        type: string
+        example: 'Black, only available on apparel and equipmentGear'
+      size:
+        type: string
+        example: 'SM, available on apparel and accessories sku'
       isHomeDirect:
         type: boolean
       canView:
@@ -208,8 +280,22 @@ definitions:
         type: boolean
       maxCartQty:
         type: integer
+      parentProducts:
+        type: array
+        items:
+          $ref: '#/definitions/Product'
+      coachBonusAttributes:
+        $ref: '#/definitions/BonusAttributes'
       prices:
         $ref: '#/definitions/Price'
+      entitlement:
+        $ref: '#/definitions/Entitlement'
+      disclaimers:
+        type: array
+        items:
+          type: string
+
+
   Price:
     type: object
     properties:
@@ -217,8 +303,30 @@ definitions:
         type: string
       retailPrice:
         type: number
-      coachPrice:
+      userSegmentPrice:
         type: number
+      promotionPrice:
+        type: number
+      specialOfferPrice:
+        type: number
+        
+  BonusAttributes:
+    type: object
+    properties:
+      personalVolume:
+        type: number
+      commissionVolume:
+        type: number
+      retailCommission:
+        type: number
+      clubCommission:
+        type: number       
+      subscriptionCommission:
+        type: number
+      fastStartAmount:
+        type: number       
+
+        
   Media:
     type: object
     properties:
@@ -242,6 +350,18 @@ definitions:
         example: cdn caching version
       altText:
         type: string
+        
+  Entitlement:
+    type: object
+    properties:
+      id:
+        type: string
+      displayName:
+        type: string
+      bodUrl:
+        type: string
+
+
   Error:
     type: object
     properties:
