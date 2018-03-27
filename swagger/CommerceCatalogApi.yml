@@ -1,13 +1,77 @@
 swagger: '2.0'
 info:
   description: Commerce Catalog API for exposing Product and Skus
-  version: '1.0'
+  version: "1.0.0"
   title: Commerce Catalog API
 host: 'localhost:11000'
 basePath: /service/rest/v1
 schemes:
   - http
 paths:
+  '/api/catalog/programs/{programIds}':
+    get:
+      tags:
+        - programs
+      summary: Finds Programs by program ids
+      description: Multiple category Ids can be provided with comma separated strings
+      operationId: getPrograms
+      produces:
+        - application/json
+      parameters:
+        - name: programIds
+          in: path
+          description: 'Optional Single program Id Or Comma separated list of program ids'
+          required: true
+          type: string
+        - name: productDetails
+          in: query
+          description: 'Optional productDetails, if not passed false will be used'
+          required: false
+          type: boolean
+        - name: skuDetails
+          in: query
+          description: 'Optional skuDetails, if not passed false will be used'
+          required: false
+          type: boolean
+        - name: locale
+          in: query
+          description: 'Optional locale, if not passed en_US will be used'
+          required: false
+          type: string
+        - name: digitalProperty
+          in: query
+          description: 'Optional digitalProperty'
+          required: false
+          type: string
+        - name: User-Agent
+          in: header
+          type: string
+          required: true
+          description: User Agent parameter
+        - name: MSG_ID
+          in: header
+          type: string
+          description: Optional MSG_ID for logging and debugging
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/ProgramsResponse'
+        '202':
+          description: Partial successful operation
+          schema:
+            $ref: '#/definitions/ProgramsResponse'
+        '400':
+          description: 'Invalid categoryId(s), api version,'
+        '401':
+          description: No API-KEY or invalid API-KEY
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        '404':
+          description: No category(s) found
+        '500':
+          description: Internal Server Error
+
   '/api/catalog/categories/{categoryIds}':
     get:
       tags:
@@ -183,6 +247,20 @@ securityDefinitions:
     name: API-KEY
     in: header
 definitions:
+  ProgramsResponse:
+    type: object
+    properties:
+      version:
+        type: number
+      message:
+        type: string
+      msgId:
+        type: string
+      programs:
+        type: array
+        items:
+          $ref: '#/definitions/Program'
+
   CategoryResponse:
     type: object
     properties:
@@ -239,6 +317,57 @@ definitions:
       error:
         $ref: '#/definitions/Error'
 
+  Program:
+    type: object
+    properties:
+      id:
+        type: string
+      title:
+        type: string
+      description:
+        type: string
+      longDescription:
+        type: string
+      type:
+        type: string
+      duration:
+        type: string
+      benefits:
+        type: string
+      level:
+        type: string
+      time:
+        type: number
+      cardio:
+        type: string
+      strength:
+        type: string
+      trainers:
+        type: array
+        items:
+          type: string
+      programTypes:
+        type: array
+        items:
+          type: string
+      media:
+        type: array
+        items:
+          $ref: '#/definitions/Media'
+      featuredProducts:
+        type: array
+        items:
+          $ref: '#/definitions/Product'
+      products:
+        type: array
+        items:
+          $ref: '#/definitions/Product'
+      crossSellProducts:
+        type: array
+        items:
+          $ref: '#/definitions/Product'
+      link:
+        type: string
 
   Product:
     type: object
